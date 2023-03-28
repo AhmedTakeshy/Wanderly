@@ -1,7 +1,13 @@
-import React from "react";
 import bannerVid from "../assets/beachVid.mp4";
 import { AiOutlineSearch } from "react-icons/ai";
+import { Link, useNavigate } from "react-router-dom";
+import { useRef } from "react";
+
 const Banner = () => {
+  const cityInput = useRef();
+
+  const data = cityInput.current;
+
   return (
     <div className=" w-full h-screen relative">
       <video
@@ -20,13 +26,15 @@ const Banner = () => {
         >
           <div>
             <input
-              className="bg-transparent w-[300px] sm:w-[400px] font-[Poppins] focus:outline-none p-2"
+              className="bg-transparent w-[300px] sm:w-[400px] font-[Poppins] focus:outline-none p-2 font-semibold"
               type="text"
+              name="city"
+              ref={cityInput}
               placeholder="Search Destinations"
             />
           </div>
           <div>
-            <button>
+            <button className="m-1">
               <AiOutlineSearch
                 size={20}
                 className="icon"

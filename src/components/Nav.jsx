@@ -9,8 +9,9 @@ import {
   FaPinterest,
   FaYoutube,
 } from "react-icons/fa";
-
+import { NavLink } from "react-router-dom";
 const Nav = () => {
+  const [loc, setLoc] = useState(false);
   const [nav, setNav] = useState(false);
   const [logo, setLogo] = useState(false);
   const handleNav = () => {
@@ -18,15 +19,80 @@ const Nav = () => {
     setLogo(!logo);
   };
   return (
-    <nav className="flex w-full justify-between items-center text-white px-4 h-20 absolute z-10">
+    <nav
+      className={`flex w-full justify-between items-center ${
+        loc === true ? "text-black" : "text-white"
+      } px-4 h-20 absolute z-10`}
+    >
       <h1 onClick={handleNav} className={logo ? "hidden md:block" : "block"}>
         Wanderly
       </h1>
       <ul className="hidden md:flex items-center  text-xl">
-        <li>Home</li>
-        <li>Destination</li>
-        <li>Travel</li>
-        <li>Book</li>
+        <li>
+          <NavLink
+            onClick={() => {
+              setLoc(false);
+            }}
+            className={({ isActive }) =>
+              isActive ? `underline underline-offset-4` : undefined
+            }
+            to="/"
+          >
+            Home
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            onClick={() => {
+              setLoc(true);
+            }}
+            className={({ isActive }) =>
+              isActive ? `underline underline-offset-4 ` : undefined
+            }
+            to="destinations"
+          >
+            Destinations
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            onClick={() => {
+              setLoc(true);
+            }}
+            className={({ isActive, to }) =>
+              isActive ? `underline underline-offset-4` : undefined
+            }
+            to="travel"
+          >
+            Travel
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            onClick={() => {
+              setLoc(true);
+            }}
+            className={({ isActive, to }) =>
+              isActive ? `underline underline-offset-4` : undefined
+            }
+            to="book"
+          >
+            Book
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            onClick={() => {
+              setLoc(true);
+            }}
+            className={({ isActive, to }) =>
+              isActive ? `underline underline-offset-4` : undefined
+            }
+            to="selects"
+          >
+            Selects
+          </NavLink>
+        </li>
       </ul>
       <div className=" hidden md:flex justify-between items-center px-4 gap-x-2">
         <BiSearch size={20} />
@@ -53,11 +119,21 @@ const Nav = () => {
       >
         <h1>Wanderly</h1>
         <ul>
-          <li className="border-b">Home</li>
-          <li className="border-b">Destinations</li>
-          <li className="border-b">Travel</li>
-          <li className="border-b">View</li>
-          <li className="border-b">Book</li>
+          <li className="border-b">
+            <NavLink to="/">Home</NavLink>
+          </li>
+          <li className="border-b">
+            <NavLink to="destinations">Destinations</NavLink>
+          </li>
+          <li className="border-b">
+            <NavLink to="Travet">Travel</NavLink>
+          </li>
+          <li className="border-b">
+            <NavLink to="view">View</NavLink>
+          </li>
+          <li className="border-b">
+            <NavLink to="book">Book</NavLink>
+          </li>
           <div className="flex flex-col">
             <button className="my-6">Search</button>
             <button>Account</button>
