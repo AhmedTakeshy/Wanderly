@@ -1,13 +1,14 @@
-import Destinations from "./components/Destinations";
-import Booking from "./components/Booking";
-import Selects from "./components/selects/Selects";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorPage from "./pages/ErrorPage";
 import RootLayout from "./pages/RootLayout";
 import HomePage from "./pages/HomePage";
-import HotelsPage, { HotelsLoader } from "./pages/HotelsPage";
+import HotelsPage from "./pages/HotelsPage";
 import HotelDetails from "./pages/HotelDetails";
-import { HotelsAction } from "./pages/HomePage";
+import HotelRoot from "./pages/HotelRoot";
+
+import Flights from "./components/Flights";
+import Booking from "./components/Booking";
+import Carousel from "./components/Carousel";
 
 const router = createBrowserRouter([
   {
@@ -18,13 +19,15 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <HomePage />,
-        action: HotelsAction,
       },
       {
         path: "hotels",
-        element: <HotelsPage />,
-        loader: HotelsLoader,
+        element: <HotelRoot />,
         children: [
+          {
+            index: true,
+            element: <HotelsPage />,
+          },
           {
             path: ":hotelId",
             element: <HotelDetails />,
@@ -32,20 +35,16 @@ const router = createBrowserRouter([
         ],
       },
       {
-        path: "destination",
-        element: <Destinations />,
+        path: "/flights",
+        element: <Flights />,
       },
       {
         path: "travel",
-        element: <Selects />,
+        element: <Carousel />,
       },
       {
         path: "book",
         element: <Booking />,
-      },
-      {
-        path: "selects",
-        element: <Selects />,
       },
     ],
   },

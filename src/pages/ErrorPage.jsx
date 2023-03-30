@@ -1,7 +1,11 @@
 import { Link, useRouteError } from "react-router-dom";
 import Nav from "../components/Nav";
+import { useDispatch } from "react-redux";
+import { uiActions } from "../store/ui-slice";
 import classes from "./ErrorPage.module.css";
 const ErrorPage = () => {
+  const dispatch = useDispatch();
+  dispatch(uiActions.changeColor(true));
   const error = useRouteError();
   let title = "An error ocurred!";
   let message = "Something went wrong!";

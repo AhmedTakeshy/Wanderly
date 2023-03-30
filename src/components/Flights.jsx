@@ -4,7 +4,7 @@ import Maldives from "../assets/maldives.jpg";
 import Maldives2 from "../assets/maldives2.jpg";
 import KeyWest from "../assets/keywest.jpg";
 
-const Destinations = () => {
+const Flights = () => {
   return (
     <div className="max-w-[1240px] mx-auto py-16 px-4 text-center">
       <h1>All-Inclusive Resorts</h1>
@@ -24,4 +24,4 @@ const Destinations = () => {
   );
 };
 
-export default Destinations;
+export default Flights;

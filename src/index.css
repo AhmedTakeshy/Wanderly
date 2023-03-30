@@ -39,3 +39,18 @@
     }
 }
 
+
+.calendarWrap {
+    display: inline-block;
+    position: relative;
+}
+
+.calendarElement {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 40px;
+    border: 1px solid #ccc;
+    z-index: 999;
+    border-radius: .5rem;
+}

@@ -5,8 +5,8 @@ const uiSlice = createSlice({
   name: "ui",
   initialState: initialState,
   reducers: {
-    changeColor(state) {
-      state.black = true;
+    changeColor(state, action) {
+      state.black = action.payload;
     },
   },
 });

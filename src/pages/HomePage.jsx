@@ -6,8 +6,3 @@ const HomePage = () => {
 };
 
 export default HomePage;
-
-export const HotelsAction = async ({ request }) => {
-  const data = await request.formData();
-  console.log(data);
-};

@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BiUser, BiSearch } from "react-icons/bi";
 import { AiOutlineClose } from "react-icons/ai";
 import { HiOutlineMenuAlt4 } from "react-icons/hi";
+import { useDispatch, useSelector } from "react-redux";
+import { uiActions } from "../store/ui-slice";
+import { NavLink, useLocation } from "react-router-dom";
 import {
   FaFacebook,
   FaTwitter,
@@ -9,9 +12,20 @@ import {
   FaPinterest,
   FaYoutube,
 } from "react-icons/fa";
-import { NavLink } from "react-router-dom";
+
 const Nav = () => {
-  const [loc, setLoc] = useState(false);
+  const black = useSelector((state) => state.ui.black);
+  const dispatch = useDispatch();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.pathname === "/") {
+      dispatch(uiActions.changeColor(false));
+    } else {
+      dispatch(uiActions.changeColor(true));
+    }
+  }, [location.pathname, dispatch]);
+
   const [nav, setNav] = useState(false);
   const [logo, setLogo] = useState(false);
   const handleNav = () => {
@@ -21,18 +35,17 @@ const Nav = () => {
   return (
     <nav
       className={`flex w-full justify-between items-center ${
-        loc === true ? "text-black" : "text-white"
+        black === true ? "text-black" : "text-white"
       } px-4 h-20 absolute z-10`}
     >
       <h1 onClick={handleNav} className={logo ? "hidden md:block" : "block"}>
-        Wanderly
+        <NavLink to="/" className="hover:text-black">
+          Wanderly
+        </NavLink>
       </h1>
       <ul className="hidden md:flex items-center  text-xl">
         <li>
           <NavLink
-            onClick={() => {
-              setLoc(false);
-            }}
             className={({ isActive }) =>
               isActive ? `underline underline-offset-4` : undefined
             }
@@ -43,50 +56,38 @@ const Nav = () => {
         </li>
         <li>
           <NavLink
-            onClick={() => {
-              setLoc(true);
-            }}
             className={({ isActive }) =>
-              isActive ? `underline underline-offset-4 ` : undefined
+              isActive ? `underline underline-offset-4 ` : "hover:text-black"
             }
-            to="destinations"
+            to="/flights"
           >
-            Destinations
+            Flights
           </NavLink>
         </li>
         <li>
           <NavLink
-            onClick={() => {
-              setLoc(true);
-            }}
-            className={({ isActive, to }) =>
-              isActive ? `underline underline-offset-4` : undefined
+            className={({ isActive }) =>
+              isActive ? `underline underline-offset-4` : "hover:text-black"
             }
-            to="travel"
+            to="/travel"
           >
             Travel
           </NavLink>
         </li>
         <li>
           <NavLink
-            onClick={() => {
-              setLoc(true);
-            }}
-            className={({ isActive, to }) =>
-              isActive ? `underline underline-offset-4` : undefined
+            className={({ isActive }) =>
+              isActive ? `underline underline-offset-4` : "hover:text-black"
             }
-            to="book"
+            to="/book"
           >
             Book
           </NavLink>
         </li>
         <li>
           <NavLink
-            onClick={() => {
-              setLoc(true);
-            }}
             className={({ isActive, to }) =>
-              isActive ? `underline underline-offset-4` : undefined
+              isActive ? `underline underline-offset-4` : "hover:text-black"
             }
             to="selects"
           >
@@ -113,32 +114,43 @@ const Nav = () => {
         onClick={handleNav}
         className={
           nav
-            ? "absolute text-black left-0 top-0 w-full bg-gray-100/90 px-4 pt-7 flex flex-col md:hidden"
+            ? "absolute text-black left-0 top-0 w-full bg-gray-100/90 px-4 py-6  flex flex-col md:hidden"
             : "absolute left-[-100%]"
         }
       >
-        <h1>Wanderly</h1>
+        <h1>
+          <NavLink to="/">Wanderly</NavLink>
+        </h1>
         <ul>
           <li className="border-b">
-            <NavLink to="/">Home</NavLink>
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                isActive
+                  ? dispatch(uiActions.changeColor(false))
+                  : dispatch(uiActions.changeColor(true))
+              }
+            >
+              Home
+            </NavLink>
           </li>
           <li className="border-b">
-            <NavLink to="destinations">Destinations</NavLink>
+            <NavLink to="/flights">Flights</NavLink>
           </li>
           <li className="border-b">
-            <NavLink to="Travet">Travel</NavLink>
+            <NavLink to="/travel">Travel</NavLink>
           </li>
           <li className="border-b">
-            <NavLink to="view">View</NavLink>
+            <NavLink to="/view">View</NavLink>
           </li>
           <li className="border-b">
-            <NavLink to="book">Book</NavLink>
+            <NavLink to="/book">Book</NavLink>
           </li>
           <div className="flex flex-col">
             <button className="my-6">Search</button>
             <button>Account</button>
           </div>
-          <div className="flex justify-between my-6">
+          <div className="flex justify-between mt-8">
             <FaFacebook className="icon" />
             <FaTwitter className="icon" />
             <FaYoutube className="icon" />
