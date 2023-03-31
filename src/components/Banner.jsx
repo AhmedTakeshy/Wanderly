@@ -50,7 +50,7 @@ const Banner = () => {
           className="flex justify-between items-center flex-col md:flex-row max-w-[700px] mx-auto w-full border p-1
           rounded-lg text-black bg-gray-100/90"
         >
-          <div className="flex flex-col justify-between md:gap-4  md:flex-row">
+          <div className="flex flex-col justify-between w-full md:w-auto px-4 md:px-0 md:gap-4  md:flex-row">
             <div className="flex justify-start gap-2 items-center">
               <GoLocation size={18} className="icon" />
               <input

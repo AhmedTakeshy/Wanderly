@@ -7,7 +7,7 @@ const DestinationCard = (props) => {
         <span className="p-2 backdrop-blur-sm bg-gray-800/30 w-12 h-12 justify-center items-center flex self-end rounded-xl border-gray-400/50 border hover:shadow-xl">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-8 w-8 text-white"
+            className="h-8 w-8 text-white hover:text-black/40"
             viewBox="0 0 20 20"
             fill="currentColor"
           >
