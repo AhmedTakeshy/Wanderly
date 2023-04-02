@@ -84,16 +84,6 @@ const Nav = () => {
             Book
           </NavLink>
         </li>
-        <li>
-          <NavLink
-            className={({ isActive, to }) =>
-              isActive ? `underline underline-offset-4` : "hover:text-black"
-            }
-            to="selects"
-          >
-            Selects
-          </NavLink>
-        </li>
       </ul>
       <div className=" hidden md:flex justify-between items-center px-4 gap-x-2">
         <BiSearch size={20} />

@@ -1,12 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = { searchResult: [] };
+const initialState = { searchResult: [], history: [] };
 const searchSlice = createSlice({
   name: "ui",
   initialState: initialState,
   reducers: {
     getData(state, action) {
-      state.searchResult = action.payload;
+      state.searchResult.push(action.payload);
+    },
+    history(state, action) {
+      state.history.push(action.payload);
     },
   },
 });
