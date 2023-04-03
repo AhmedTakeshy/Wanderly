@@ -1,9 +1,6 @@
-const HotelsDataCard = ({ id, src, name }) => {
+const HotelsDataCard = ({ src, name }) => {
   return (
-    <div
-      key={id}
-      className="basis-2/3 p-4 items-center justify-center w-[680px] rounded-xl group sm:flex space-x-6 bg-black bg-opacity-50 shadow-xl hover:rounded-2xl"
-    >
+    <div className="basis-2/3 p-4 items-center justify-center w-[680px] rounded-xl group sm:flex space-x-6 bg-black bg-opacity-50 shadow-xl hover:rounded-2xl">
       <img
         className="mx-auto block h-60 w-full object-cover rounded-lg"
         alt="art cover"

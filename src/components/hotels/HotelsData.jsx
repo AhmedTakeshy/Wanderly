@@ -1,13 +1,16 @@
-import { Await, defer, json } from "react-router-dom";
+import { Await, defer, json, useNavigation, redirect } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { searchActions } from "../../store/search-slice";
-import { Suspense, useCallback, useEffect, useState } from "react";
+import { Suspense, useCallback, useEffect, useState, useRef } from "react";
 import axios from "axios";
 import HotelsDataCard from "./HotelsDataCard";
 import HotelsFilter from "./HotelsFilter";
 
 const HotelsData = () => {
   const dispatch = useDispatch();
+  const navigation = useNavigation();
+  let loading = navigation.state === "loading";
+  console.log(navigation.state);
   const hotelsData = useSelector(
     (state) => state.search.history[state.search.history.length - 1]
   );
@@ -80,18 +83,16 @@ const HotelsData = () => {
     <div className="flex items-center justify-center gap-4 mx-12 my-8">
       <HotelsFilter />
       <main className="flex flex-col justify-center gap-4">
-        <Suspense fallback={<div className="animate-pulse"></div>}>
-          {/* <Await resolve={}>
-            {hotelsData &&
+        {loading && <div className="animate-pulse"></div>}
+        {!loading &&
+          hotelsData &&
           hotelsData.map((hotel) => (
             <HotelsDataCard
-              id={hotel.id}
+              key={hotel.id}
               name={hotel.name}
               src={hotel.propertyImage.image.url}
             />
           ))}
-          </Await> */}
-        </Suspense>
       </main>
     </div>
   );

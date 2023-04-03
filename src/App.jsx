@@ -1,10 +1,10 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import ErrorPage from "./pages/ErrorPage";
-import RootLayout from "./pages/RootLayout";
+import ErrorPage from "./layouts/ErrorPage";
+import RootLayout from "./layouts/RootLayout";
 import HomePage from "./pages/HomePage";
-import HotelsPage from "./pages/HotelsPage";
+import HotelsPage, { HotelsDataAction } from "./pages/HotelsPage";
 import HotelDetails from "./pages/HotelDetails";
-import HotelRoot from "./pages/HotelRoot";
+import HotelsLayout from "./layouts/HotelLayout";
 
 import Flights from "./components/Flights";
 import Booking from "./components/Booking";
@@ -16,13 +16,11 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     errorElement: <ErrorPage />,
     children: [
-      {
-        index: true,
-        element: <HomePage />,
-      },
+      { index: true, element: <HomePage /> },
       {
         path: "hotels",
-        element: <HotelRoot />,
+        element: <HotelsLayout />,
+        action: HotelsDataAction,
         children: [
           {
             index: true,
@@ -50,18 +48,7 @@ const router = createBrowserRouter([
   },
 ]);
 function App() {
-  return (
-    // <div>
-    //   <Nav />
-    //   <Banner />
-    //   <Destinations />
-    //   <Booking />
-    //   <Selects />
-    //   <Carousel />
-    //   <Footer />
-    // </div>
-    <RouterProvider router={router} />
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;

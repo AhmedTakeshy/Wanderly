@@ -22,16 +22,16 @@ const DateRangeComp = (props) => {
   // get the target element to toggle
   const refOne = useRef(null);
 
-  const transferDate = useCallback(() => {
-    props.onTransfer(range[0]);
-  }, [range, props]);
+  // const transferDate = useCallback(() => {
+  //   props.onTransfer(range[0]);
+  // }, [range, props]);
 
   useEffect(() => {
-    transferDate();
+    // transferDate();
     // event listeners
     document.addEventListener("keydown", hideOnEscape, true);
     document.addEventListener("click", hideOnClickOutside, true);
-  }, [transferDate]);
+  }, []);
 
   // hide dropdown on ESC press
   const hideOnEscape = (e) => {
@@ -57,6 +57,7 @@ const DateRangeComp = (props) => {
         readOnly
         className="bg-transparent w-[220px] focus:outline-none p-2 font-semibold"
         onClick={() => setOpen((open) => !open)}
+        name="date"
       />
 
       <div ref={refOne}>
