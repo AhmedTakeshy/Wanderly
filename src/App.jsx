@@ -1,11 +1,11 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import ErrorPage from "./pages/ErrorPage";
-import RootLayout from "./pages/RootLayout";
+import ErrorPage from "./layouts/ErrorPage";
+import RootLayout from "./layouts/RootLayout";
 import HomePage from "./pages/HomePage";
 import HotelsPage from "./pages/HotelsPage";
 import HotelDetails from "./pages/HotelDetails";
-import HotelRoot from "./pages/HotelRoot";
-
+import HotelsLayout from "./layouts/HotelLayout";
+import { HotelsDataAction } from "./components/hotels/HotelsData";
 import Flights from "./components/Flights";
 import Booking from "./components/Booking";
 import Carousel from "./components/Carousel";
@@ -22,20 +22,22 @@ const router = createBrowserRouter([
       },
       {
         path: "hotels",
-        element: <HotelRoot />,
+        element: <HotelsLayout />,
         children: [
           {
-            index: true,
+            // index: true,
+            path: "/hotels",
             element: <HotelsPage />,
+            action: HotelsDataAction,
           },
           {
-            path: ":hotelId",
+            path: ":id",
             element: <HotelDetails />,
           },
         ],
       },
       {
-        path: "/flights",
+        path: "flights",
         element: <Flights />,
       },
       {
@@ -50,18 +52,7 @@ const router = createBrowserRouter([
   },
 ]);
 function App() {
-  return (
-    // <div>
-    //   <Nav />
-    //   <Banner />
-    //   <Destinations />
-    //   <Booking />
-    //   <Selects />
-    //   <Carousel />
-    //   <Footer />
-    // </div>
-    <RouterProvider router={router} />
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
