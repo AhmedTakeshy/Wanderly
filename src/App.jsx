@@ -2,10 +2,10 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorPage from "./layouts/ErrorPage";
 import RootLayout from "./layouts/RootLayout";
 import HomePage from "./pages/HomePage";
-import HotelsPage, { HotelsDataAction } from "./pages/HotelsPage";
+import HotelsPage from "./pages/HotelsPage";
 import HotelDetails from "./pages/HotelDetails";
 import HotelsLayout from "./layouts/HotelLayout";
-
+import { HotelsDataAction } from "./components/hotels/HotelsData";
 import Flights from "./components/Flights";
 import Booking from "./components/Booking";
 import Carousel from "./components/Carousel";
@@ -16,24 +16,28 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     errorElement: <ErrorPage />,
     children: [
-      { index: true, element: <HomePage /> },
+      {
+        index: true,
+        element: <HomePage />,
+      },
       {
         path: "hotels",
         element: <HotelsLayout />,
-        action: HotelsDataAction,
         children: [
           {
-            index: true,
+            // index: true,
+            path: "/hotels",
             element: <HotelsPage />,
+            action: HotelsDataAction,
           },
           {
-            path: ":hotelId",
+            path: ":id",
             element: <HotelDetails />,
           },
         ],
       },
       {
-        path: "/flights",
+        path: "flights",
         element: <Flights />,
       },
       {

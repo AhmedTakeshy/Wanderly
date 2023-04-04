@@ -1,6 +1,5 @@
 import { Outlet } from "react-router-dom";
-
-const HotelLayout = () => {
+const HotelsLayout = () => {
   return (
     <>
       <main className="pt-28">
@@ -10,4 +9,4 @@ const HotelLayout = () => {
   );
 };
 
-export default HotelLayout;
+export default HotelsLayout;
