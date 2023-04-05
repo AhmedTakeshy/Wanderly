@@ -1,8 +1,11 @@
-const HotelsDataCard = ({ src, name }) => {
+const HotelsDataCard = ({ id, src, name, address }) => {
   return (
-    <div className="basis-2/3 p-4 items-center justify-center w-[680px] rounded-xl group sm:flex space-x-6 bg-black bg-opacity-50 shadow-xl hover:rounded-2xl">
+    <div
+      key={id}
+      className="basis-2/3 p-4 items-center justify-center w-[680px] rounded-xl group sm:flex space-x-6 bg-black bg-opacity-50 shadow-xl hover:rounded-2xl"
+    >
       <img
-        className="mx-auto block h-60 w-full object-cover rounded-lg"
+        className="mx-auto block h-60 w-full object-cover rounded-lg overflow-hidden"
         alt="art cover"
         loading="lazy"
         src={src}
@@ -21,7 +24,7 @@ const HotelsDataCard = ({ src, name }) => {
                 className="rounded-full h-8 w-8"
                 alt="profile"
               />
-              <span className="text-sm">Yeah same question here too 🔥</span>
+              <span className="text-sm">{address}</span>
             </div>
             <div className=" px-3 py-1 rounded-lg flex space-x-2 flex-row">
               <div className="cursor-pointer text-center text-md justify-center items-center flex">

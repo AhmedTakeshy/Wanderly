@@ -1,15 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = { searchResult: [], history: [] };
+const initialState = { addHotelsData: [] };
 const searchSlice = createSlice({
   name: "ui",
   initialState: initialState,
   reducers: {
-    getData(state, action) {
-      state.searchResult.push(action.payload);
-    },
-    history(state, action) {
-      state.history.push(action.payload);
+    addHotelsData(state, action) {
+      state.addHotelsData.push(action.payload);
     },
   },
 });

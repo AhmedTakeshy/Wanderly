@@ -11,8 +11,8 @@ const DateRangeComp = (props) => {
   // date state
   const [range, setRange] = useState([
     {
-      startDate: new Date(),
-      endDate: addDays(new Date(), 1),
+      startDate: addDays(new Date(), 1),
+      endDate: addDays(new Date(), 3),
       key: "selection",
     },
   ]);
