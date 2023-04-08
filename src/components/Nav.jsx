@@ -108,21 +108,10 @@ const Nav = () => {
             : "absolute left-[-100%]"
         }
       >
-        <h1>
-          <NavLink to="/">Wanderly</NavLink>
-        </h1>
+        <h1>Wanderly</h1>
         <ul>
           <li className="border-b">
-            <NavLink
-              to="/"
-              className={({ isActive }) =>
-                isActive
-                  ? dispatch(uiActions.changeColor(false))
-                  : dispatch(uiActions.changeColor(true))
-              }
-            >
-              Home
-            </NavLink>
+            <NavLink to="/">Home</NavLink>
           </li>
           <li className="border-b">
             <NavLink to="/flights">Flights</NavLink>

@@ -1,12 +1,46 @@
 import bannerVid from "../assets/beachVid.mp4";
 import { AiOutlineSearch } from "react-icons/ai";
+import { ImSpinner9 } from "react-icons/im";
 import { GoLocation } from "react-icons/go";
 import { SlCalender } from "react-icons/sl";
 import { BsPeople } from "react-icons/bs";
 import DateRangeComp from "./DataRange";
-import { Form } from "react-router-dom";
+import { useFetcher, useNavigate, json } from "react-router-dom";
+
+import { useEffect, useRef } from "react";
+import { useDispatch } from "react-redux";
+import { searchActions } from "../store/search-slice";
 
 const Banner = () => {
+  const fetcher = useFetcher();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  let isMounted = useRef(false);
+
+  const { data, state } = fetcher;
+  const city = fetcher.formData?.get("city");
+  const date = fetcher.formData?.get("date");
+  const rooms = fetcher.formData?.get("rooms");
+
+  const isSubmitting = state === "submitting";
+
+  useEffect(() => {
+    if (isMounted.current) {
+      if (data && city && date && rooms) {
+        const url = data.imgUrl[0].image_url;
+
+        dispatch(searchActions.addSearchData({ city, date, rooms }));
+        dispatch(searchActions.addSearchImg(url));
+      }
+      if (data && state === "idle") {
+        dispatch(searchActions.addHotelsData(data.AllHotelsData));
+        navigate("/hotels", { state: data.AllHotelsData });
+      }
+    } else {
+      isMounted.current = true;
+    }
+  }, [data, state]);
+
   return (
     <div className=" w-full h-screen relative">
       <video
@@ -19,9 +53,9 @@ const Banner = () => {
       <div className="absolute top-0 w-full h-full flex flex-col justify-center text-center text-white p-4">
         <h1>First Class Travel</h1>
         <h2 className="py-4">Top 1% Locations Worldwide</h2>
-        <Form
+        <fetcher.Form
           method="post"
-          action="hotels" //action="/hotels?index" to target the index page
+          action="/hotels" //action="/hotels?index" to target the index page
           className="flex justify-between items-center flex-col md:flex-row max-w-[700px] mx-auto w-full border p-1
           rounded-lg text-black bg-gray-100/90"
         >
@@ -46,24 +80,49 @@ const Banner = () => {
                 className="bg-transparent focus:outline-none p-2 w-[130px] font-semibold" //w-[300px] sm:w-[400px]
                 type="number"
                 name="rooms"
+                max="8"
+                min="1"
                 placeholder="Rooms"
                 required
               />
             </div>
           </div>
           <div className=" md:w-auto w-full">
-            <button className="md:m-1 w-full md:w-auto" type="submit">
+            <button
+              className="md:m-1 w-full md:w-auto"
+              type="submit"
+              disabled={isSubmitting}
+            >
               <span className=" md:hidden inline font-bold tracking-widest">
-                Search
+                {isSubmitting ? (
+                  <span className="flex items-center justify-center">
+                    <svg className="animate-spin h-5 w-5 mr-3">
+                      <ImSpinner9 size={20} />
+                    </svg>
+                    Submitting
+                  </span>
+                ) : (
+                  "Search"
+                )}
               </span>
-              <AiOutlineSearch
-                size={20}
-                className="icon hidden md:inline"
-                style={{ color: "#ffffff" }}
-              />
+              {isSubmitting ? (
+                <svg className="animate-spin h-5 w-5">
+                  <ImSpinner9
+                    size={20}
+                    className="icon hidden md:inline"
+                    style={{ color: "#ffffff" }}
+                  />
+                </svg>
+              ) : (
+                <AiOutlineSearch
+                  size={20}
+                  className="icon hidden md:inline"
+                  style={{ color: "#ffffff" }}
+                />
+              )}
             </button>
           </div>
-        </Form>
+        </fetcher.Form>
       </div>
     </div>
   );

@@ -5,8 +5,8 @@ const HotelsDataCard = ({ id, src, name, address }) => {
       className="basis-2/3 p-4 items-center justify-center w-[680px] rounded-xl group sm:flex space-x-6 bg-black bg-opacity-50 shadow-xl hover:rounded-2xl"
     >
       <img
-        className="mx-auto block h-60 w-full object-cover rounded-lg overflow-hidden"
-        alt="art cover"
+        className="mx-auto block h-60 w-1/2 object-cover rounded-lg overflow-hidden"
+        alt={`${name} hotel`}
         loading="lazy"
         src={src}
       />
@@ -19,11 +19,6 @@ const HotelsDataCard = ({ id, src, name, address }) => {
           </div>
           <div className="flex items-center space-x-4 justify-between">
             <div className="flex gap-3 space-y-1">
-              <img
-                src="https://flowbite.com/docs/images/people/profile-picture-1.jpg"
-                className="rounded-full h-8 w-8"
-                alt="profile"
-              />
               <span className="text-sm">{address}</span>
             </div>
             <div className=" px-3 py-1 rounded-lg flex space-x-2 flex-row">

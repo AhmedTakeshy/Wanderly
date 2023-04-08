@@ -3,12 +3,14 @@ import ErrorPage from "./layouts/ErrorPage";
 import RootLayout from "./layouts/RootLayout";
 import HomePage from "./pages/HomePage";
 import HotelsPage from "./pages/HotelsPage";
-import HotelDetails from "./pages/HotelDetails";
+import HotelDetails from "./components/hotels/HotelDetails";
 import HotelsLayout from "./layouts/HotelLayout";
-import { HotelsDataAction } from "./components/hotels/HotelsData";
+import { HotelsAction } from "./helpers";
+
 import Flights from "./components/Flights";
 import Booking from "./components/Booking";
 import Carousel from "./components/Carousel";
+import AboutPage from "./pages/AboutPage";
 
 const router = createBrowserRouter([
   {
@@ -21,14 +23,13 @@ const router = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: "hotels",
+        path: "/hotels",
         element: <HotelsLayout />,
+        action: HotelsAction,
         children: [
           {
-            // index: true,
-            path: "/hotels",
+            index: true,
             element: <HotelsPage />,
-            action: HotelsDataAction,
           },
           {
             path: ":id",
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
       {
         path: "book",
         element: <Booking />,
+      },
+      {
+        path: "about",
+        element: <AboutPage />,
       },
     ],
   },

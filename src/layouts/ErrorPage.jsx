@@ -9,7 +9,6 @@ const ErrorPage = () => {
   const error = useRouteError();
   let title = "An error ocurred!";
   let message = "Something went wrong!";
-
   if (error.status === 404) {
     title = "Look like you're lost";
     message = "The page you are looking for not available!";
@@ -22,7 +21,7 @@ const ErrorPage = () => {
           <div className="flex justify-center my-4 ">
             <div className="w-full text-center">
               <div className={`${classes.four_zero_four_bg} mb-20`}>
-                <h1>404</h1>
+                <h1>{error.status}</h1>
               </div>
 
               <div className={classes.content_box_404}>
