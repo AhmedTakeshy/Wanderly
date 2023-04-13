@@ -54,3 +54,9 @@
     z-index: 999;
     border-radius: .5rem;
 }
+
+/* input[type="text"],input[type="text"]:focus,input[type="text"]:active {
+    background-color: transparent !important;
+    color: transparent !important;
+    
+} */

@@ -3,7 +3,7 @@ import ErrorPage from "./layouts/ErrorPage";
 import RootLayout from "./layouts/RootLayout";
 import HomePage from "./pages/HomePage";
 import HotelsPage from "./pages/HotelsPage";
-import HotelDetails from "./components/hotels/HotelDetails";
+import HotelDetails, { hotelDetailsLoader } from "./pages/HotelDetails";
 import HotelsLayout from "./layouts/HotelLayout";
 import { HotelsAction } from "./helpers";
 
@@ -34,6 +34,7 @@ const router = createBrowserRouter([
           {
             path: ":id",
             element: <HotelDetails />,
+            loader: hotelDetailsLoader,
           },
         ],
       },

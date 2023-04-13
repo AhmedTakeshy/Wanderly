@@ -8,7 +8,7 @@ import DateRangeComp from "./DataRange";
 import { useFetcher, useNavigate, json } from "react-router-dom";
 
 import { useEffect, useRef } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { searchActions } from "../store/search-slice";
 
 const Banner = () => {
@@ -21,20 +21,24 @@ const Banner = () => {
   const city = fetcher.formData?.get("city");
   const date = fetcher.formData?.get("date");
   const rooms = fetcher.formData?.get("rooms");
-
+  const existedCities = useSelector((state) => state.search?.searchHistory);
   const isSubmitting = state === "submitting";
 
   useEffect(() => {
     if (isMounted.current) {
-      if (data && city && date && rooms) {
-        const url = data.imgUrl[0].image_url;
-
-        dispatch(searchActions.addSearchData({ city, date, rooms }));
-        dispatch(searchActions.addSearchImg(url));
-      }
       if (data && state === "idle") {
         dispatch(searchActions.addHotelsData(data.AllHotelsData));
         navigate("/hotels", { state: data.AllHotelsData });
+      }
+
+      if (data && city && date && rooms) {
+        const url = data.imgUrl[0].image_url;
+        const result = existedCities.map((item) => item.city);
+
+        if (!result.includes(city)) {
+          dispatch(searchActions.addSearchData({ city, date, rooms }));
+          dispatch(searchActions.addSearchImg(url));
+        }
       }
     } else {
       isMounted.current = true;
@@ -93,11 +97,11 @@ const Banner = () => {
               type="submit"
               disabled={isSubmitting}
             >
-              <span className=" md:hidden inline font-bold tracking-widest">
+              <span className="md:hidden inline font-bold tracking-widest">
                 {isSubmitting ? (
                   <span className="flex items-center justify-center">
                     <svg className="animate-spin h-5 w-5 mr-3">
-                      <ImSpinner9 size={20} />
+                      <ImSpinner9 size={20} className="md:hidden inline" />
                     </svg>
                     Submitting
                   </span>
@@ -106,7 +110,7 @@ const Banner = () => {
                 )}
               </span>
               {isSubmitting ? (
-                <svg className="animate-spin h-5 w-5">
+                <svg className="animate-spin h-5 w-5 hidden md:inline">
                   <ImSpinner9
                     size={20}
                     className="icon hidden md:inline"
