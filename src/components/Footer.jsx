@@ -1,4 +1,4 @@
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   FaFacebook,
   FaTwitter,
@@ -9,7 +9,7 @@ import {
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-br from-[#c0c0aa]  to-[#6ce6d9]">
+    <footer className="mt-auto bg-gradient-to-br from-[#c0c0aa] to-[#6ce6d9] select-none">
       <div className="max-w-screen-xl px-4 pt-16 pb-8 mx-auto sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           <div>

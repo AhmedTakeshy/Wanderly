@@ -1,16 +1,37 @@
 import axios from "axios";
-import { defer, useLoaderData } from "react-router-dom";
+import { Await, defer, useLoaderData } from "react-router-dom";
 import HotelItem from "../components/hotels/HotelItem";
+import { Suspense } from "react";
+import PropagateLoader from "react-spinners/PropagateLoader";
 
 const HotelDetails = () => {
   const { hotel } = useLoaderData();
   console.log(hotel);
-  return <HotelItem />;
+  return (
+    <Suspense
+      fallback={
+        <PropagateLoader
+          color="#36d7b7"
+          cssOverride={{
+            margin: "1rem auto",
+            display: "block",
+            width: "100%",
+            height: "100%",
+            textAlign: "center",
+          }}
+        />
+      }
+    >
+      <Await resolve={hotel}>
+        {(loadedHotel) => <HotelItem hotel={loadedHotel} />}
+      </Await>
+    </Suspense>
+  );
 };
 
 export default HotelDetails;
 
-const hotelLoader = async (id) => {
+const loadedHotel = async (id) => {
   const options = {
     headers: {
       "X-RapidAPI-Key": import.meta.env.VITE_PRICELINE_PROVIDER,
@@ -28,6 +49,6 @@ const hotelLoader = async (id) => {
 export const hotelDetailsLoader = async ({ params }) => {
   const id = params.id;
   return defer({
-    hotel: await hotelLoader(id),
+    hotel: loadedHotel(id),
   });
 };

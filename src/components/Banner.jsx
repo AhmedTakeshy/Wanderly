@@ -67,7 +67,7 @@ const Banner = () => {
             <div className="flex justify-start gap-2 items-center">
               <GoLocation size={18} className="icon" />
               <input
-                className="bg-transparent focus:outline-none p-2 font-semibold"
+                className="bg-transparent focus:outline-none p-2 font-semibold border-none"
                 type="text"
                 name="city"
                 placeholder="Where to go"
@@ -81,7 +81,7 @@ const Banner = () => {
             <div className="flex justify-start gap-2  items-center">
               <BsPeople size={18} className="icon" />
               <input
-                className="bg-transparent focus:outline-none p-2 w-[130px] font-semibold" //w-[300px] sm:w-[400px]
+                className="bg-transparent focus:outline-none p-2 w-[130px] font-semibold border-none" //w-[300px] sm:w-[400px]
                 type="number"
                 name="rooms"
                 max="8"

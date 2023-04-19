@@ -6,7 +6,7 @@ const RootLayout = () => {
   return (
     <>
       <Nav />
-      <main>
+      <main className="select-none">
         <Outlet />
       </main>
       <Footer />

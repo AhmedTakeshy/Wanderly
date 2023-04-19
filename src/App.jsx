@@ -9,7 +9,7 @@ import { HotelsAction } from "./helpers";
 
 import Flights from "./components/Flights";
 import Booking from "./components/Booking";
-import Carousel from "./components/Carousel";
+import SimCarousel from "./components/SimCarousel";
 import AboutPage from "./pages/AboutPage";
 
 const router = createBrowserRouter([
@@ -44,7 +44,7 @@ const router = createBrowserRouter([
       },
       {
         path: "travel",
-        element: <Carousel />,
+        element: <SimCarousel />,
       },
       {
         path: "book",
