@@ -11,7 +11,7 @@ import Flights from "./components/Flights";
 import Booking from "./components/Booking";
 import SimCarousel from "./components/SimCarousel";
 import AboutPage from "./pages/AboutPage";
-import LoginPage from "./pages/LoginPage";
+import LoginPage from "./pages/user/LoginPage";
 
 const router = createBrowserRouter([
   {
