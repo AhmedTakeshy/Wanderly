@@ -86,8 +86,12 @@ const Nav = () => {
         </li>
       </ul>
       <div className=" hidden md:flex justify-between items-center px-4 gap-x-2">
-        <BiSearch size={20} />
-        <BiUser size={20} />
+        <NavLink
+          to="/login"
+          className={({ isActive }) => (isActive ? null : "hover:text-black")}
+        >
+          <BiUser size={25} />
+        </NavLink>
       </div>
 
       {/* Hamburger */}

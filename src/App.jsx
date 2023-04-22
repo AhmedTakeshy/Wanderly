@@ -11,6 +11,7 @@ import Flights from "./components/Flights";
 import Booking from "./components/Booking";
 import SimCarousel from "./components/SimCarousel";
 import AboutPage from "./pages/AboutPage";
+import LoginPage from "./pages/LoginPage";
 
 const router = createBrowserRouter([
   {
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
       {
         path: "about",
         element: <AboutPage />,
+      },
+      {
+        path: "login",
+        element: <LoginPage />,
       },
     ],
   },
