@@ -32,12 +32,12 @@ const SimCarousel = ({ reviews }) => {
       <BsArrowLeftSquareFill
         onClick={prevSlide}
         size={20}
-        className="absolute text-3xl text-blue cursor-pointer left-2"
+        className="absolute text-3xl text-custom_purple cursor-pointer left-2"
       />
       <BsArrowRightSquareFill
         onClick={nextSlide}
         size={20}
-        className="absolute text-3xl text-blue cursor-pointer right-2"
+        className="absolute text-3xl text-custom_purple cursor-pointer right-2"
       />
       <div className="bg-gray-100  rounded-t-md w-full h-[9.5rem] flex flex-col items-center justify-center transition-opacity duration-500 ease-in-out">
         {reviews.map(
@@ -53,7 +53,7 @@ const SimCarousel = ({ reviews }) => {
                 </p>
                 <p
                   key={index + 1}
-                  className="bg-blue text-white w-full rounded-b-md text-center mt-auto"
+                  className="bg-custom_purple text-white w-full rounded-b-md text-center mt-auto"
                 >
                   {item.firstName} - {item.overallScore} / 10.0
                 </p>

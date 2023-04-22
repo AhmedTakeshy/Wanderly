@@ -4,6 +4,7 @@ import { useState } from "react";
 import Map from "./Map";
 import SimCarousel from "../SimCarousel";
 import { MdLabelImportant } from "react-icons/md";
+import { TypeAnimation } from "react-type-animation";
 
 const HotelItem = ({ hotel }) => {
   console.log(hotel);
@@ -31,7 +32,7 @@ const HotelItem = ({ hotel }) => {
     <>
       <div key={hotel.hotelId} className="mx-auto sm:px-6 lg:px-8 mt-6">
         <div className="flex flex-col md:flex-row">
-          <div className="overflow-auto md:w-1/4 px-4">
+          <div className="overflow-auto md:w-1/4 px-4 scrollbar-hide">
             <h2 className="mb-2 leading-tight tracking-tight font-bold text-gray-800 text-2xl md:text-3xl">
               {hotel.name}
             </h2>
@@ -39,7 +40,7 @@ const HotelItem = ({ hotel }) => {
               Brand:{" "}
               <a
                 href={`https://www.google.com/search?q=${hotel.brand}`}
-                className="text-indigo-600 hover:underline"
+                className="text-custom_purple hover:underline"
                 target="_blank"
               >
                 {hotel.brand}
@@ -56,12 +57,37 @@ const HotelItem = ({ hotel }) => {
             <div className="xl:flex sm:flex flex-col my-4 md:hidden lg:hidden">
               <div className="flex justify-end w-full h-16 px-2 items-center rounded-sm bg-gray-100/90 ">
                 <div className="flex flex-col justify-center items-center mr-2">
-                  <span>Fabulous</span>
+                  <TypeAnimation
+                    sequence={[
+                      "Fabulous",
+                      2000,
+                      "Fantastic",
+                      2000,
+                      "Nice",
+                      2000,
+                      "Wonderful",
+                      2000,
+                      "Good",
+                      2000,
+                      "Excellent",
+                      2000,
+                      "Superb",
+                      2000,
+                      "Great",
+                      2000,
+                      "Very Good",
+                      2000,
+                    ]}
+                    speed={50}
+                    className="text-black"
+                    wrapper="span"
+                    repeat={Infinity}
+                  />
                   <span className="text-xs -mt-[.35rem] text-gray-400">
                     {hotel.guestReviews?.length} reviews
                   </span>
                 </div>
-                <span className="w-12 h-9 rounded-md flex items-center justify-center bg-blue text-white font-bold">
+                <span className="w-12 h-9 rounded-md flex items-center justify-center bg-custom_purple text-white font-bold">
                   {hotel.overallGuestRating}
                 </span>
               </div>
@@ -76,10 +102,12 @@ const HotelItem = ({ hotel }) => {
                 className="hidden md:flex xl:hidden"
               />
               <img
+                className="h-full"
                 src={hotel?.images[3].imageHDUrl}
                 alt={`${hotel.name} img 3`}
               />
               <img
+                className="h-full"
                 src={hotel?.images[2].imageHDUrl}
                 alt={`${hotel.name} img 2`}
               />
@@ -166,14 +194,14 @@ const HotelItem = ({ hotel }) => {
               </article>
             </div>
           </div>
-          <div className="flex flex-wrap md:w-1/4 w-full h-[34rem] overscroll-none overflow-auto py-4 bg-gradient-to-tl from-[#0cebeb] via-[#20e3b2] to-[#29ffc6] rounded-sm">
-            <h2 className="text-white font-bold text-2xl px-2 mb-4">
+          <div className="flex flex-wrap h-[31.5rem] md:w-1/4 overscroll-none overflow-auto mx-2 py-4 bg-gradient-to-tl from-[#0cebeb] via-[#20e3b2] to-[#29ffc6] rounded-md">
+            <h2 className="text-black font-bold text-2xl px-2 mb-4">
               Most popular facilities
             </h2>
             {hotel.hotelFeatures.features.map((feature, index) => (
               <p
                 key={index}
-                className="bg-transparent text-white border-2 border-white p-2 m-2"
+                className="bg-transparent text-black border-2 rounded border-black p-2 m-2"
               >
                 {feature}
               </p>

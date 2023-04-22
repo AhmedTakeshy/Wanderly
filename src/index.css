@@ -3,14 +3,6 @@
 @tailwind utilities;
 
 
-:root {
-    --primary-dark: #5651e5;
-    --primary-light: #709dff;
-}
-
-.icon {
-    color: #5651e5;
-}
 
 @layer base {
 
@@ -31,11 +23,21 @@
     }
 
     button,button[type="submit"] {
-        @apply p-3 border bg-gradient-to-r from-primary to-secondary text-white rounded-md;
+        @apply p-3 border bg-custom_purple  text-white rounded-md;
     }
 
     .icon {
-        @apply text-2xl cursor-pointer;
+        @apply text-custom_purple text-2xl cursor-pointer;
+    }
+
+    .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+    }
+    
+    /* For IE, Edge and Firefox */
+    .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
     }
 }
 
@@ -54,9 +56,3 @@
     z-index: 999;
     border-radius: .5rem;
 }
-
-/* input[type="text"],input[type="text"]:focus,input[type="text"]:active {
-    background-color: transparent !important;
-    color: transparent !important;
-    
-} */

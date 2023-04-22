@@ -36,7 +36,7 @@ const HotelsDataCard = ({
               classNames="mt-0"
               isHalf={true}
             />
-            <span className="w-12 h-9 rounded-md bg-blue text-white font-bold flex justify-center items-center">
+            <span className="w-12 h-9 rounded-md bg-custom_purple text-white font-bold flex justify-center items-center">
               {overallRating}
             </span>
           </div>

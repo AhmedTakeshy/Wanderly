@@ -26,15 +26,15 @@ const Banner = () => {
 
   useEffect(() => {
     if (isMounted.current) {
-      if (data && state === "idle") {
+      if (data?.AllHotelsData && state === "idle") {
         dispatch(searchActions.addHotelsData(data.AllHotelsData));
         navigate("/hotels", { state: data.AllHotelsData });
       }
 
-      if (data && city && date && rooms) {
-        const url = data.imgUrl[0].image_url;
+      if (data?.AllHotelsData && data?.imgUrl && city && date && rooms) {
+        console.log(data);
+        const url = data.imgUrl[0]?.image_url;
         const result = existedCities.map((item) => item.city);
-
         if (!result.includes(city)) {
           dispatch(searchActions.addSearchData({ city, date, rooms }));
           dispatch(searchActions.addSearchImg(url));

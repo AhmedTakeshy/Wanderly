@@ -39,8 +39,11 @@ const Nav = () => {
       } px-4 h-20 absolute z-10`}
     >
       <h1 onClick={handleNav} className={logo ? "hidden md:block" : "block"}>
-        <NavLink to="/" className="hover:text-black">
-          Wanderly
+        <NavLink to="/">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-secondary to-primary text-6xl">
+            W
+          </span>
+          anderly
         </NavLink>
       </h1>
       <ul className="hidden md:flex items-center  text-xl">
