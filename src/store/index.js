@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import uiReducer from "./ui-slice";
 import searchReducer from "./search-slice";
+import userReducer from "./user-slice";
 import { persistReducer, persistStore } from "redux-persist";
 import { combineReducers } from "redux";
 import thunk from "redux-thunk";
@@ -14,6 +15,7 @@ const persistConfig = {
 const reducers = combineReducers({
   ui: uiReducer,
   search: searchReducer,
+  user: userReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, reducers);
