@@ -6,8 +6,8 @@ module.exports = {
     extend: {
       backgroundImage: {},
       colors: {
-        primary: "#73d7ff",
-        secondary: "#6D40D7",
+        primary: "#6D40D7",
+        secondary: "#73d7ff",
         custom_purple: "#5651e5",
       },
     },

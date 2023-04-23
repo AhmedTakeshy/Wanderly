@@ -6,7 +6,7 @@ const RootLayout = () => {
   return (
     <>
       <Nav />
-      <main className="select-none">
+      <main className="select-none min-h-screen">
         <Outlet />
       </main>
       <Footer />

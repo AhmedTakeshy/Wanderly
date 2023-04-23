@@ -38,9 +38,9 @@ const Nav = () => {
         black === true ? "text-black" : "text-white"
       } px-4 h-20 absolute z-10`}
     >
-      <h1 onClick={handleNav} className={logo ? "hidden md:block" : "block"}>
+      <h1 className={logo ? "hidden md:block" : "block"}>
         <NavLink to="/">
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-secondary to-primary text-6xl">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary text-5xl md:text-6xl">
             W
           </span>
           anderly
@@ -115,7 +115,12 @@ const Nav = () => {
             : "absolute left-[-100%]"
         }
       >
-        <h1>Wanderly</h1>
+        <h1>
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary text-5xl">
+            W
+          </span>
+          anderly
+        </h1>
         <ul>
           <li className="border-b">
             <NavLink to="/">Home</NavLink>
@@ -133,8 +138,9 @@ const Nav = () => {
             <NavLink to="/book">Book</NavLink>
           </li>
           <div className="flex flex-col">
-            <button className="my-6">Search</button>
-            <button>Account</button>
+            <button className="mt-6">
+              <NavLink to="login">Account</NavLink>
+            </button>
           </div>
           <div className="flex justify-between mt-8">
             <FaFacebook className="icon" />
