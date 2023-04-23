@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { BiUser, BiSearch } from "react-icons/bi";
 import { AiOutlineClose } from "react-icons/ai";
 import { HiOutlineMenuAlt4 } from "react-icons/hi";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,8 +11,13 @@ import {
   FaPinterest,
   FaYoutube,
 } from "react-icons/fa";
+import Dropdown from "../pages/user/Dropdown";
 
 const Nav = () => {
+  const [showComponent, setShowComponent] = useState(false);
+  const showComponentHandler = () => {
+    setShowComponent((prev) => !prev);
+  };
   const black = useSelector((state) => state.ui.black);
   const dispatch = useDispatch();
   const location = useLocation();
@@ -88,13 +92,11 @@ const Nav = () => {
           </NavLink>
         </li>
       </ul>
-      <div className=" hidden md:flex justify-between items-center px-4 gap-x-2">
-        <NavLink
-          to="/login"
-          className={({ isActive }) => (isActive ? null : "hover:text-black")}
-        >
-          <BiUser size={25} />
-        </NavLink>
+      <div
+        className=" hidden md:flex justify-between items-center px-4 gap-x-2"
+        onClick={showComponentHandler}
+      >
+        <Dropdown status={showComponent} />
       </div>
 
       {/* Hamburger */}
@@ -138,8 +140,9 @@ const Nav = () => {
             <NavLink to="/book">Book</NavLink>
           </li>
           <div className="flex flex-col">
-            <button className="mt-6">
-              <NavLink to="login">Account</NavLink>
+            <button className="mt-6" onClick={showComponentHandler}>
+              {/* <Dropdown status={showComponent} /> */}
+              Account
             </button>
           </div>
           <div className="flex justify-between mt-8">
