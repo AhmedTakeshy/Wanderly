@@ -4,7 +4,9 @@ module.exports = {
   content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
-      backgroundImage: {},
+      backgroundImage: {
+        bgProfile: "url(/src/assets/borabora2.jpg)",
+      },
       colors: {
         primary: "#6D40D7",
         secondary: "#73d7ff",

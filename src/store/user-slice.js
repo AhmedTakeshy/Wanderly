@@ -1,12 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = { auth: false };
+const initialState = { locHistory: [] };
 const user = createSlice({
   name: "user",
   initialState: initialState,
   reducers: {
-    authenticate(state, action) {
-      state.auth = action.payload;
+    addLocation(state, action) {
+      state.locHistory.push(action.payload);
     },
   },
 });

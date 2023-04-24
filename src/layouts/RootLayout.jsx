@@ -1,10 +1,16 @@
 import { Outlet, useLocation } from "react-router-dom";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { userActions } from "../store/user-slice";
 
 const RootLayout = () => {
   const location = useLocation();
-  console.log(location);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(userActions.addLocation(location.pathname));
+  }, [dispatch, location.pathname]);
   return (
     <>
       <Nav />

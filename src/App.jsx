@@ -6,6 +6,7 @@ import HotelsPage from "./pages/HotelsPage";
 import HotelDetails, { hotelDetailsLoader } from "./pages/HotelDetails";
 import HotelsLayout from "./layouts/HotelLayout";
 import { HotelsAction } from "./helpers";
+import PropagateLoader from "react-spinners/PropagateLoader";
 
 import Flights from "./components/Flights";
 import Booking from "./components/Booking";
@@ -63,7 +64,23 @@ const router = createBrowserRouter([
   },
 ]);
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <RouterProvider
+      router={router}
+      fallbackElement={
+        <PropagateLoader
+          className="flex justify-center items-center"
+          color="#36d7b7"
+          cssOverride={{
+            margin: "1rem auto",
+            width: "100%",
+            height: "100%",
+            textAlign: "center",
+          }}
+        />
+      }
+    />
+  );
 }
 
 export default App;
