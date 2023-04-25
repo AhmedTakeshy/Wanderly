@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 
-
 @layer base {
 
     li {
@@ -33,6 +32,8 @@
     .scrollbar-hide::-webkit-scrollbar {
         display: none;
     }
+
+        
     
     /* For IE, Edge and Firefox */
     .scrollbar-hide {

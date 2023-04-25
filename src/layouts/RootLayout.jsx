@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { userActions } from "../store/user-slice";
+import Contact from "../components/ContactForm";
 
 const RootLayout = () => {
   const location = useLocation();
@@ -16,6 +17,7 @@ const RootLayout = () => {
       <Nav />
       <main className="select-none min-h-screen">
         <Outlet />
+        <Contact />
       </main>
       <Footer />
     </>
