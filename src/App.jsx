@@ -8,11 +8,11 @@ import HotelsLayout from "./layouts/HotelLayout";
 import { HotelsAction } from "./helpers";
 import PropagateLoader from "react-spinners/PropagateLoader";
 
-import Flights from "./components/Flights";
 import Booking from "./components/Booking";
 import SimCarousel from "./components/SimCarousel";
 import AboutPage from "./pages/AboutPage";
 import ProfilePage from "./pages/user/ProfilePage";
+import FlightPage from "./pages/FlightPage";
 
 const router = createBrowserRouter([
   {
@@ -42,7 +42,7 @@ const router = createBrowserRouter([
       },
       {
         path: "flights",
-        element: <Flights />,
+        element: <FlightPage />,
       },
       {
         path: "travel",

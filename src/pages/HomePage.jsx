@@ -1,4 +1,4 @@
-import Banner from "../components/Banner";
+import Banner from "../components/home/Banner";
 import Destination from "../components/destination/Destination";
 import HotelsHistory from "../components/hotels/HotelsHistory";
 

@@ -35,19 +35,19 @@ const HotelsHistory = () => {
                     />
                   </Link>
                 ))}
-            {!isAuthenticated && (
-              <h2 className="text-xl inline-block md:mt-8 lg:mt-4">
-                For all recent searches please
-                <span
-                  className="cursor-pointer transition duration-300 ml-1 underline hover:text-teal-500"
-                  onClick={() => loginWithRedirect()}
-                >
-                  login
-                </span>
-                .
-              </h2>
-            )}
           </div>
+          {!isAuthenticated && searchData.length >= 3 && (
+            <h2 className="text-xl inline-block mt-6 ">
+              For more recent searches please
+              <span
+                className="cursor-pointer transition duration-300 ml-1 underline hover:text-teal-500"
+                onClick={() => loginWithRedirect()}
+              >
+                login
+              </span>
+              .
+            </h2>
+          )}
         </div>
       </>
     )

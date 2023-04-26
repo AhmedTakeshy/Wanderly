@@ -1,15 +1,15 @@
-import bannerVid from "../assets/beachVid.mp4";
+import bannerVid from "../../assets/beachVid.mp4";
 import { AiOutlineSearch } from "react-icons/ai";
 import { ImSpinner9 } from "react-icons/im";
 import { GoLocation } from "react-icons/go";
 import { SlCalender } from "react-icons/sl";
 import { BsPeople } from "react-icons/bs";
-import DateRangeComp from "./DataRange";
+import DateRangeComp from "../hotels/DataRange";
 import { useFetcher, useNavigate } from "react-router-dom";
 
 import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { searchActions } from "../store/search-slice";
+import { searchActions } from "../../store/search-slice";
 import { toast } from "react-toastify";
 
 const Banner = () => {
@@ -38,6 +38,9 @@ const Banner = () => {
           dispatch(searchActions.addSearchData({ city, date, rooms }));
           dispatch(searchActions.addSearchImg(url));
         }
+      }
+      if (!data?.AllHotelsData && state === "idle") {
+        toast.info("Please correct your search information.");
       }
     } else {
       isMounted.current = true;

@@ -1,22 +1,32 @@
-import React from "react";
 import { RiCustomerService2Fill } from "react-icons/ri";
 import { MdOutlineTravelExplore } from "react-icons/md";
+import { useForm } from "react-hook-form";
+import { IoIosArrowDown } from "react-icons/io";
+import { MdFlightTakeoff, MdFlightLand } from "react-icons/md";
 
 const Search = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data) => console.log(data);
+  console.log(errors);
+
   return (
     <div className="max-w-[1240px] mx-auto grid lg:grid-cols-3 gap-4 px-4 py-16">
-      <div className="lg:col-span-2 flex flex-col justify-evenly">
+      <div className="lg:col-span-2 flex flex-col justify-between">
         <div>
           <h2>LUXURY INCLUDED VACATIONS FOR TWO PEOPLE</h2>
-          <p className="py-4">
+          <p className="py-4 ">
             Come experience the very pinnacle of luxury Caribbean all-inclusive
-            vacations for couples at BEACHES Resorts. Our luxury beach resorts,
+            vacations for couples at Wanderly Resorts. Our luxury beach resorts,
             set along the most gorgeous tropical settings and exquisite beaches
             in Saint Lucia, Jamaica, Antigua, The Bahamas, Grenada, Barbados and
             Curaçao, feature unlimited gourmet dining, unique bars serving
             premium liquors and wines, and every land and water sport, including
             complimentary green fees at our golf resorts and certified scuba
-            diving at most resorts. If you are planning a wedding, BEACHES is
+            diving at most resorts. If you are planning a wedding, Wanderly is
             the leader in Caribbean destination weddings and honeymoon packages.
           </p>
         </div>
@@ -47,30 +57,69 @@ const Search = () => {
       </div>
 
       <div>
-        <div className="border text-center">
+        <div className="border text-center rounded">
           <p className="pt-2">GET AN ADDITIONAL 10% OFF</p>
           <p className="py-4">12 HOURS LEFT</p>
           <p className="bg-gray-800 text-gray-200 py-2">BOOK NOW AND SAVE</p>
         </div>
-        <form className="w-full">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="w-full focus:outline-none"
+        >
+          <div className="flex flex-col my-4 relative">
+            <label htmlFor="trip">Trip-type</label>
+            <select
+              id="trip"
+              className="border rounded-md p-2 pr-2 appearance-none"
+              {...register("trip", { required: true })}
+            >
+              <option value="round">Round-trip</option>
+              <option value="oneWay">One-Way</option>
+            </select>
+            <IoIosArrowDown className="absolute right-2 top-[50%] translate-y-[-50%] text-black" />
+          </div>
           <div className="flex flex-col my-2">
             <label>Destination</label>
-            <select className="border rounded-md p-2">
-              <option>Grande Antigua</option>
-              <option>Key West</option>
-              <option>Maldives</option>
-              <option>Cozumel</option>
-            </select>
+            <div className="flex justify-between items-center gap-4 relative">
+              <input
+                placeholder="From?"
+                type="text"
+                name="CityFrom"
+                {...register("CityFrom", { required: true })}
+                className="border rounded-md p-2 w-2/4"
+              />
+              <MdFlightTakeoff className="text-black absolute left-[8rem] md:left-[9.5rem] top-[50%]  translate-y-[-50%]" />
+              <input
+                placeholder="To?"
+                type="text"
+                name="CityTo"
+                {...register("CityTo", { required: true })}
+                className="border rounded-md p-2 w-2/4"
+              />
+              <MdFlightLand className="text-black absolute right-2 top-[50%] translate-y-[-50%]" />
+            </div>
           </div>
           <div className="flex flex-col my-4">
-            <label>Check-In</label>
-            <input className="border rounded-md p-2" type="date" />
+            <label htmlFor="departure">Departure</label>
+            <input
+              id="departure"
+              name="departure_date"
+              className="border rounded-md p-2"
+              type="date"
+              {...register("departure_date", { required: true })}
+            />
           </div>
           <div className="flex flex-col my-2">
-            <label>Check-Out</label>
-            <input className="border rounded-md p-2" type="date" />
+            <label htmlFor="return">Return</label>
+            <input
+              id="return"
+              name="return_date"
+              className="border rounded-md p-2"
+              type="date"
+              {...register("return_date", { required: true })}
+            />
           </div>
-          <button className="w-full my-4">Rates & Availabilities</button>
+          <button className="w-full my-4">Search</button>
         </form>
       </div>
     </div>

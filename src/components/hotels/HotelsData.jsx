@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import HotelsDataCard from "./ui/HotelsDataCard";
 import HotelsFilter from "./HotelsFilter";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const HotelsData = () => {
   const { state } = useLocation();
