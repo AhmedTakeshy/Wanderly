@@ -39,7 +39,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="flex items-center justify-center fixed right-4 bottom-4 z-50">
+    <div className="flex items-center justify-center fixed left-4 bottom-4 z-50">
       <ToastContainer />
       <div className="w-full">
         {open && (
@@ -147,7 +147,7 @@ const Contact = () => {
             </form>
           </div>
         )}
-        <div className="mx-auto mt-8 flex max-w-[550px] items-center justify-end space-x-5">
+        <div className="mx-auto mt-8 flex max-w-[550px] items-center justify-start space-x-5">
           <button
             className="flex h-[70px] w-[70px] items-center justify-center rounded-full bg-custom_purple text-white"
             onClick={chatBoxToggleHandler}
@@ -177,7 +177,7 @@ const Contact = () => {
               </span>
             )}
             {!open && (
-              <span className="chat-icon">
+              <span>
                 <svg
                   width="28"
                   height="28"

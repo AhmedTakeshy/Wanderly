@@ -13,11 +13,6 @@ const searchSlice = createSlice({
     },
     addSearchImg(state, action) {
       const index = state.searchHistory.length - 1;
-      // const updatedSearchData = {
-      //   ...state.searchHistory[index], // copy existing properties
-      //   url: action.payload, // add new url property
-      // };
-      // state.searchHistory[index] = updatedSearchData;
       state.searchHistory[index].url = action.payload;
     },
   },

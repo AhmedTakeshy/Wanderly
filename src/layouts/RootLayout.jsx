@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { userActions } from "../store/user-slice";
 import Contact from "../components/ContactForm";
+import ScrollToTop from "../components/ScrollToTop";
 
 const RootLayout = () => {
   const location = useLocation();
@@ -18,6 +19,7 @@ const RootLayout = () => {
       <main className="select-none min-h-screen">
         <Outlet />
         <Contact />
+        <ScrollToTop />
       </main>
       <Footer />
     </>

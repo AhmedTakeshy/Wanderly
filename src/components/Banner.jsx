@@ -5,11 +5,12 @@ import { GoLocation } from "react-icons/go";
 import { SlCalender } from "react-icons/sl";
 import { BsPeople } from "react-icons/bs";
 import DateRangeComp from "./DataRange";
-import { useFetcher, useNavigate, json } from "react-router-dom";
+import { useFetcher, useNavigate } from "react-router-dom";
 
 import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { searchActions } from "../store/search-slice";
+import { toast } from "react-toastify";
 
 const Banner = () => {
   const fetcher = useFetcher();
@@ -30,9 +31,7 @@ const Banner = () => {
         dispatch(searchActions.addHotelsData(data.AllHotelsData));
         navigate("/hotels", { state: data.AllHotelsData });
       }
-
       if (data?.AllHotelsData && data?.imgUrl && city && date && rooms) {
-        console.log(data);
         const url = data.imgUrl[0]?.image_url;
         const result = existedCities.map((item) => item.city);
         if (!result.includes(city)) {

@@ -8,7 +8,6 @@ const Dropdown = ({ status }) => {
   const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
   const location = useLocation();
   const target = location.pathname === "/profile" ? "/" : location.pathname;
-  console.log(target);
   return (
     <div className="flex justify-center">
       <div className="relative">
