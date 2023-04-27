@@ -4,7 +4,7 @@ import { useState } from "react";
 import PropagateLoader from "react-spinners/PropagateLoader";
 import ProtectedRoute from "../../components/authentication/ProtectedRoute";
 import DestinationCard from "../../components/destination/DestinationCard";
-import Title from "../../components/Title";
+import Title from "../../components/UI/Title";
 
 const Profile = () => {
   const { user, isAuthenticated, isLoading, logout } = useAuth0();

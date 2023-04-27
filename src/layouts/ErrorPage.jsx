@@ -1,5 +1,5 @@
 import { Link, useRouteError } from "react-router-dom";
-import Nav from "../components/Nav";
+import Nav from "../components/UI/Nav";
 import { useDispatch } from "react-redux";
 import { uiActions } from "../store/ui-slice";
 import classes from "./ErrorPage.module.css";

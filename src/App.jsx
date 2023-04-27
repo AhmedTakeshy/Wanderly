@@ -9,7 +9,7 @@ import { HotelsAction } from "./helpers";
 import PropagateLoader from "react-spinners/PropagateLoader";
 
 import Booking from "./components/Booking";
-import SimCarousel from "./components/SimCarousel";
+import SimCarousel from "./components/UI/SimCarousel";
 import AboutPage from "./pages/AboutPage";
 import ProfilePage from "./pages/user/ProfilePage";
 import FlightPage from "./pages/FlightPage";

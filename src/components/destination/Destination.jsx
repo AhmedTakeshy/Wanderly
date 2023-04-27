@@ -1,5 +1,5 @@
 import DestinationCard from "./DestinationCard";
-import Title from "../Title";
+import Title from "../UI/Title";
 
 import cairo from "../../assets/cairo.jpg";
 import cappadocia from "../../assets/Cappadocia.jpg";

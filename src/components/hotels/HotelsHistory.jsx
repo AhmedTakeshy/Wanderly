@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Title from "../Title";
+import Title from "../UI/Title";
 import HotelsHistoryCard from "./ui/HotelsHistoryCard";
 import { useSelector } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";

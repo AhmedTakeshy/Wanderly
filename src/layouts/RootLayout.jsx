@@ -1,11 +1,11 @@
 import { Outlet, useLocation } from "react-router-dom";
-import Nav from "../components/Nav";
-import Footer from "../components/Footer";
+import Nav from "../components/UI/Nav";
+import Footer from "../components/UI/Footer";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { userActions } from "../store/user-slice";
-import Contact from "../components/ContactForm";
-import ScrollToTop from "../components/ScrollToTop";
+import Contact from "../components/UI/ContactForm";
+import ScrollToTop from "../components/UI/ScrollToTop";
 
 const RootLayout = () => {
   const location = useLocation();

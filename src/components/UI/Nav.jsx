@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { HiOutlineMenuAlt4 } from "react-icons/hi";
 import { useDispatch, useSelector } from "react-redux";
-import { uiActions } from "../store/ui-slice";
+import { uiActions } from "../../store/ui-slice";
 import { NavLink, useLocation } from "react-router-dom";
 import {
   FaFacebook,
@@ -11,7 +11,7 @@ import {
   FaPinterest,
   FaYoutube,
 } from "react-icons/fa";
-import Dropdown from "../pages/user/Dropdown";
+import Dropdown from "../../pages/user/Dropdown";
 
 const Nav = () => {
   const [showComponent, setShowComponent] = useState(false);
