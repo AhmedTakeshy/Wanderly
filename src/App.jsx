@@ -17,6 +17,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
@@ -54,8 +55,11 @@ const router = createBrowserRouter([
         path: "profile",
         element: <ProfilePage />,
       },
+      {
+        path: "*",
+        element: <ErrorPage />,
+      },
     ],
-    errorElement: <ErrorPage />,
   },
 ]);
 function App() {
