@@ -76,9 +76,9 @@ const Nav = () => {
             className={({ isActive }) =>
               isActive ? `underline underline-offset-4` : "hover:text-black"
             }
-            to="/travel"
+            to="/car"
           >
-            Travel
+            Car Hire
           </NavLink>
         </li>
         <li>
@@ -86,9 +86,9 @@ const Nav = () => {
             className={({ isActive }) =>
               isActive ? `underline underline-offset-4` : "hover:text-black"
             }
-            to="/book"
+            to="/about"
           >
-            Book
+            About Us
           </NavLink>
         </li>
       </ul>

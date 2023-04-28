@@ -3,7 +3,7 @@ import BoraBora2 from "../../assets/borabora2.jpg";
 import Maldives from "../../assets/maldives.jpg";
 import Maldives2 from "../../assets/maldives2.jpg";
 import KeyWest from "../../assets/keywest.jpg";
-import Booking from "../Booking";
+import SearchForm from "./Booking";
 const Flights = () => {
   return (
     <div className="max-w-[1240px] mx-auto pb-16 pt-32 px-4 text-center">
@@ -36,7 +36,7 @@ const Flights = () => {
           alt="/"
         />
       </div>
-      <Booking />
+      <SearchForm />
     </div>
   );
 };

@@ -8,8 +8,7 @@ import HotelsLayout from "./layouts/HotelLayout";
 import { HotelsAction } from "./helpers";
 import PropagateLoader from "react-spinners/PropagateLoader";
 
-import Booking from "./components/Booking";
-import SimCarousel from "./components/UI/SimCarousel";
+import CarPage from "./pages/CarPage";
 import AboutPage from "./pages/AboutPage";
 import ProfilePage from "./pages/user/ProfilePage";
 import FlightPage from "./pages/FlightPage";
@@ -18,7 +17,6 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
-    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
@@ -45,12 +43,8 @@ const router = createBrowserRouter([
         element: <FlightPage />,
       },
       {
-        path: "travel",
-        element: <SimCarousel />,
-      },
-      {
-        path: "book",
-        element: <Booking />,
+        path: "car",
+        element: <CarPage />,
       },
       {
         path: "about",
@@ -61,6 +55,7 @@ const router = createBrowserRouter([
         element: <ProfilePage />,
       },
     ],
+    errorElement: <ErrorPage />,
   },
 ]);
 function App() {

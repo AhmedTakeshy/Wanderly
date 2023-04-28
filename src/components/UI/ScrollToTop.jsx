@@ -12,9 +12,7 @@ const ScrollToTop = () => {
   };
 
   useEffect(() => {
-    if (pathname === "/about") {
-      scrollTo();
-    }
+    scrollTo();
   }, [pathname]);
 
   return (

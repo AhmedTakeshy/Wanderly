@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { IoIosArrowDown } from "react-icons/io";
 import { MdFlightTakeoff, MdFlightLand } from "react-icons/md";
 
-const Search = () => {
+const SearchForm = () => {
   const {
     register,
     handleSubmit,
@@ -14,7 +14,7 @@ const Search = () => {
   console.log(errors);
 
   return (
-    <div className="max-w-[1240px] mx-auto grid lg:grid-cols-3 gap-4 px-4 py-16">
+    <div className="max-w-[1240px] mx-auto grid lg:grid-cols-3 gap-4 py-16">
       <div className="lg:col-span-2 flex flex-col justify-between">
         <div>
           <h2>LUXURY INCLUDED VACATIONS FOR TWO PEOPLE</h2>
@@ -55,7 +55,6 @@ const Search = () => {
           </div>
         </div>
       </div>
-
       <div>
         <div className="border text-center rounded">
           <p className="pt-2">GET AN ADDITIONAL 10% OFF</p>
@@ -126,4 +125,4 @@ const Search = () => {
   );
 };
 
-export default Search;
+export default SearchForm;
