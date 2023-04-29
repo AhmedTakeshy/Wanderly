@@ -35,6 +35,7 @@ const HotelsDataCard = ({
               activeColor="#ffd700"
               classNames="mt-0"
               isHalf={true}
+              edit={false}
             />
             <span className="w-12 h-9 rounded-md bg-custom_purple text-white font-bold flex justify-center items-center">
               {overallRating}
