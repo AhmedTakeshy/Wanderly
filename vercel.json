@@ -1,6 +1,6 @@
 {
-  "routes": [
-    { "src": "/(hotels|[^.]*|about|flights|car|profile)/?.*", "dest": "/index.html" },
-    { "handle": "error", "src": "/404", "dest": "/index.html", "status": 404 }
+  "rewrites":  [
+    {"source": "/(.*)", "destination": "/"}
   ]
 }
+
