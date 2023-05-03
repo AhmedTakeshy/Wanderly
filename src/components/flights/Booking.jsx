@@ -1,7 +1,6 @@
 import { RiCustomerService2Fill } from "react-icons/ri";
 import { MdOutlineTravelExplore } from "react-icons/md";
 import { useForm } from "react-hook-form";
-import { IoIosArrowDown } from "react-icons/io";
 import { MdFlightTakeoff, MdFlightLand } from "react-icons/md";
 
 const SearchForm = () => {
@@ -69,13 +68,12 @@ const SearchForm = () => {
             <label htmlFor="trip">Trip-type</label>
             <select
               id="trip"
-              className="border rounded-md p-2 pr-2 appearance-none"
+              className="border rounded-md p-2"
               {...register("trip", { required: true })}
             >
               <option value="round">Round-trip</option>
               <option value="oneWay">One-Way</option>
             </select>
-            <IoIosArrowDown className="absolute right-2 top-[50%] translate-y-[-50%] text-black" />
           </div>
           <div className="flex flex-col my-2">
             <label>Destination</label>

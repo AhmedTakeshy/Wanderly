@@ -54,7 +54,7 @@ const HotelItem = ({ hotel }) => {
               {hotel.location.address.countryName}
             </p>
             <Map location={hotel.location} />
-            <div className="xl:flex sm:flex flex-col my-4 md:hidden lg:hidden">
+            <div className="sm:flex md:hidden xl:flex lg:hidden flex-col my-4  ">
               <div className="flex justify-end w-full h-16 px-2 items-center rounded-sm bg-gray-100/90 ">
                 <div className="flex flex-col justify-center items-center mr-2">
                   <TypeAnimation
@@ -82,6 +82,7 @@ const HotelItem = ({ hotel }) => {
                     className="text-black"
                     wrapper="span"
                     repeat={Infinity}
+                    cursor={false}
                   />
                   <span className="text-xs -mt-[.35rem] text-gray-400">
                     {hotel.guestReviews?.length} reviews
@@ -97,11 +98,6 @@ const HotelItem = ({ hotel }) => {
           <div className="md:w-3/4 px-4 ">
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
               <img
-                src={hotel?.images[4].imageHDUrl}
-                alt={`${hotel.name} img 3`}
-                className="hidden md:flex xl:hidden"
-              />
-              <img
                 className="h-full"
                 src={hotel?.images[3].imageHDUrl}
                 alt={`${hotel.name} img 3`}
@@ -112,7 +108,7 @@ const HotelItem = ({ hotel }) => {
                 alt={`${hotel.name} img 2`}
               />
               <img
-                className="h-full lg:pb-4 w-full col-span-2 md:col-start-2 row-span-2 md:col-end-4 md:row-start-1 md:row-end-4 -order-1 object-cover"
+                className="h-full w-full col-span-2 md:col-start-2 row-span-2 md:col-end-4 md:row-start-1 md:row-end-3 -order-1 object-cover"
                 src={hotel?.images[0].imageHDUrl}
                 alt={`${hotel.name} img 0`}
               />

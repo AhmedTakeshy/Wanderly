@@ -43,21 +43,22 @@ const SimCarousel = ({ reviews }) => {
         {reviews.map(
           (item, index) =>
             index === slide && (
-              <>
-                <p
-                  key={index}
-                  className="p-2 w-4/5 text-center overscroll-none overflow-auto"
-                >
-                  {`${item.reviewTextGeneral || ""} 
+              <div
+                key={index}
+                className="flex flex-col w-full items-center justify-between flex-1"
+              >
+                <p className="p-2 w-4/5 text-center h-20 overscroll-none overflow-auto">
+                  {`${
+                    item.reviewTextGeneral
+                      ? item.reviewTextGeneral
+                      : "It was nice"
+                  }
                 ${item.reviewTextPositive}`}
                 </p>
-                <p
-                  key={index + 1}
-                  className="bg-custom_purple text-white w-full rounded-b-md text-center mt-auto"
-                >
+                <p className="bg-custom_purple text-white w-full rounded-b-md text-center mt-auto">
                   {item.firstName} - {item.overallScore} / 10.0
                 </p>
-              </>
+              </div>
             )
         )}
       </div>

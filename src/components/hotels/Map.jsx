@@ -1,30 +1,62 @@
-import GoogleMapReact from "google-map-react";
-import { Icon } from "@iconify/react";
+import Map, {
+  Marker,
+  Popup,
+  FullscreenControl,
+  NavigationControl,
+} from "react-map-gl";
+import "mapbox-gl/dist/mapbox-gl.css";
+import { FaMapMarkerAlt } from "react-icons/fa";
+import { useState } from "react";
 
-const Map = ({ location }) => {
+const MapComp = ({ location }) => {
+  const [showPopup, setShowPopup] = useState(true);
+
   const loc = {
     address: location.address.addressLine1,
-    center: {
-      lat: location.latitude,
-      lng: location.longitude,
-    },
+    lat: location.latitude,
+    lng: location.longitude,
   };
+
   return (
-    <div className="w-full h-screen md:h-1/4 lg:h-1/3 mb-4 flex">
-      <GoogleMapReact
-        bootstrapURLKeys={{ key: import.meta.env.VITE_GOOGLE_MAP_KEY }}
-        defaultCenter={loc.center}
-        defaultZoom={17}
+    <div className="w-full h-screen md:h-1/4 lg:h-1/3 mb-4 flex relative">
+      <Map
+        initialViewState={{
+          longitude: loc.lng,
+          latitude: loc.lat,
+          zoom: 13,
+        }}
+        style={{ width: "100%", height: "100%" }}
+        mapStyle="mapbox://styles/ahmedtakeshy/clh5krhqx00pp01qy4bw138fq"
+        mapboxAccessToken={import.meta.env.VITE_MAPBOX_ACCESS_TOKEN}
       >
-        <div className="flex items-center justify-start">
-          <Icon icon="mdi:map-marker" className=" text-cyan-700 text-6xl" />
-          <p className="text-md-center lg:w-32 md:w-28">
-            {loc.address.substring(0, 50)}
-          </p>
-        </div>
-      </GoogleMapReact>
+        <NavigationControl />
+        <FullscreenControl position="top-left" />
+        <Marker
+          longitude={loc.lng}
+          latitude={loc.lat}
+          anchor="bottom"
+          onClick={() => setShowPopup((prev) => !prev)}
+        >
+          {showPopup && (
+            <Popup
+              className="rounded text-black"
+              longitude={loc.lng}
+              latitude={loc.lat}
+              anchor="top"
+              closeButton={false}
+              closeOnClick={false}
+            >
+              {loc.address.substring(0, 30)}
+            </Popup>
+          )}
+          <FaMapMarkerAlt size={30} className="text-custom_purple" />
+        </Marker>
+      </Map>
+      {/* <p className="text-md-center lg:w-32 md:w-28">
+          {loc.address.substring(0, 50)}
+        </p> */}
     </div>
   );
 };
 
-export default Map;
+export default MapComp;
