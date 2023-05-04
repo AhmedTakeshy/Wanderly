@@ -40,7 +40,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="flex items-center justify-center fixed left-4 bottom-4 z-50">
+    <div className="flex items-center justify-center fixed left-4 bottom-4 z-0">
       <ToastContainer />
       <div className="w-full">
         {open && (

@@ -102,7 +102,7 @@ const Nav = () => {
       </div>
 
       {/* Hamburger */}
-      <div onClick={handleNav} className="md:hidden z-10 right-2 absolute">
+      <div onClick={handleNav} className="md:hidden z-[2] right-2 absolute">
         {nav ? (
           <AiOutlineClose className="text-black" size={20} />
         ) : (
@@ -115,7 +115,7 @@ const Nav = () => {
         onClick={handleNav}
         className={
           nav
-            ? "absolute text-black left-0 top-0 w-full bg-gray-100/90 px-4 py-6  flex flex-col md:hidden"
+            ? "absolute text-black left-0 top-0 w-full h-screen bg-gray-100/90 px-4 py-6 z-[1] flex flex-col md:hidden"
             : "absolute left-[-100%]"
         }
       >

@@ -16,7 +16,7 @@ const ScrollToTop = () => {
   }, [pathname]);
 
   return (
-    <div className="flex items-center justify-center fixed right-4 bottom-4 z-50">
+    <div className="flex items-center justify-center fixed right-4 bottom-4 z-0">
       <button
         onClick={scrollTo}
         className="flex md:h-[70px] h-[50px] md:w-[70px] w-[50px] items-center justify-center rounded-full bg-custom_purple text-white"
