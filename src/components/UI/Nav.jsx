@@ -104,9 +104,12 @@ const Nav = () => {
       {/* Hamburger */}
       <div onClick={handleNav} className="md:hidden z-[2] right-2 absolute">
         {nav ? (
-          <AiOutlineClose className="text-black relative top-4" size={25} />
+          <AiOutlineClose
+            className="text-black fixed right-4 top-10"
+            size={25}
+          />
         ) : (
-          <HiOutlineMenuAlt4 size={25} />
+          <HiOutlineMenuAlt4 className=" relative top-1" size={25} />
         )}
       </div>
 
