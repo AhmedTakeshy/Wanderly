@@ -19,7 +19,7 @@ const ScrollToTop = () => {
     <div className="flex items-center justify-center fixed right-4 bottom-4 z-50">
       <button
         onClick={scrollTo}
-        className="flex h-[70px] w-[70px] items-center justify-center rounded-full bg-custom_purple text-white"
+        className="flex md:h-[70px] h-[50px] md:w-[70px] w-[50px] items-center justify-center rounded-full bg-custom_purple text-white"
       >
         <AiOutlineArrowUp size={25} />
       </button>

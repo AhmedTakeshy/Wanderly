@@ -17,6 +17,7 @@ const Contact = () => {
 
   const chatBoxToggleHandler = () => {
     setOpen((prev) => !prev);
+    reset();
   };
 
   const submitHandler = async (data) => {
@@ -147,9 +148,9 @@ const Contact = () => {
             </form>
           </div>
         )}
-        <div className="mx-auto mt-8 flex max-w-[550px] items-center justify-start space-x-5">
+        <div className="mx-auto md:mt-8 mt-4 flex max-w-[550px] items-center justify-start space-x-5">
           <button
-            className="flex h-[70px] w-[70px] items-center justify-center rounded-full bg-custom_purple text-white"
+            className="flex md:h-[70px] h-[50px] md:w-[70px] w-[50px] items-center justify-center rounded-full bg-custom_purple text-white"
             onClick={chatBoxToggleHandler}
           >
             {open && (

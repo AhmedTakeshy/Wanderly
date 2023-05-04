@@ -203,6 +203,9 @@ const HotelItem = ({ hotel }) => {
               </p>
             ))}
           </div>
+          <button className="bg-custom_purple text-white font-bold text-xl rounded-md px-4 py-2 mt-4 md:mt-0">
+            Reserve
+          </button>
         </div>
       </div>
     </>

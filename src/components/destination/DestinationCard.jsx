@@ -48,13 +48,15 @@ const DestinationCard = ({ id, title, detail, bg }) => {
             />
           )}
         </span>
-        <div className="p-4 rounded-xl w-full hover:shadow-xl backdrop-blur-sm bg-gray-800/30 self-end border-gray-400/50 border">
-          <h1 className="text-white font-bold text-3xl mb-1">{title}</h1>
+        <div className="md:p-4 p-2 rounded-xl w-full hover:shadow-xl backdrop-blur-sm bg-gray-800/30 self-end border-gray-400/50 border">
+          <h1 className="text-white font-bold md:text-3xl text-2xl mb-1">
+            {title}
+          </h1>
           <div className="flex justify-between">
-            <h3 className="text-white font-bold text-lg capitalize">
+            <h3 className="text-white font-bold md:text-lg text-base text-left capitalize">
               {detail}
             </h3>
-            <h3 className="text-white font-bold text-lg capitalize">
+            <h3 className="text-white font-bold md:text-lg text-base  text-right capitalize">
               {Math.floor(Math.random() * 100)} Tours
             </h3>
           </div>

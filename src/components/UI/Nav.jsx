@@ -4,6 +4,7 @@ import { HiOutlineMenuAlt4 } from "react-icons/hi";
 import { useDispatch, useSelector } from "react-redux";
 import { uiActions } from "../../store/ui-slice";
 import { NavLink, useLocation } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 import {
   FaFacebook,
   FaTwitter,
@@ -21,6 +22,7 @@ const Nav = () => {
   const black = useSelector((state) => state.ui.black);
   const dispatch = useDispatch();
   const location = useLocation();
+  const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
 
   useEffect(() => {
     if (location.pathname === "/") {
@@ -131,19 +133,43 @@ const Nav = () => {
             <NavLink to="/flights">Flights</NavLink>
           </li>
           <li className="border-b">
-            <NavLink to="/travel">Travel</NavLink>
+            <NavLink to="/car">Car hire</NavLink>
           </li>
           <li className="border-b">
-            <NavLink to="/view">View</NavLink>
+            <NavLink to="/about">About Us</NavLink>
           </li>
-          <li className="border-b">
-            <NavLink to="/book">Book</NavLink>
-          </li>
+          {isAuthenticated && (
+            <li className="border-b">
+              <NavLink to="/profile">Profile</NavLink>
+            </li>
+          )}
           <div className="flex flex-col">
-            <button className="mt-6" onClick={showComponentHandler}>
-              {/* <Dropdown status={showComponent} /> */}
-              Account
-            </button>
+            {!isAuthenticated && (
+              <button
+                className="mt-6"
+                onClick={() =>
+                  loginWithRedirect({
+                    redirectUri: window.location.origin + location.pathname,
+                  })
+                }
+              >
+                Login
+              </button>
+            )}
+            {isAuthenticated && (
+              <button
+                className="mt-6"
+                onClick={() =>
+                  logout({
+                    logoutParams: {
+                      returnTo: window.location.origin + target,
+                    },
+                  })
+                }
+              >
+                Logout
+              </button>
+            )}
           </div>
           <div className="flex justify-between mt-8">
             <FaFacebook className="icon" />
