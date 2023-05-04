@@ -162,7 +162,7 @@ const Nav = () => {
                 onClick={() =>
                   logout({
                     logoutParams: {
-                      returnTo: window.location.origin + target,
+                      returnTo: window.location.origin + location.pathname,
                     },
                   })
                 }
