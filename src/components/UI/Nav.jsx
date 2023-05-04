@@ -22,7 +22,7 @@ const Nav = () => {
   const black = useSelector((state) => state.ui.black);
   const dispatch = useDispatch();
   const location = useLocation();
-  const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
+  const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
 
   useEffect(() => {
     if (location.pathname === "/") {
@@ -115,7 +115,7 @@ const Nav = () => {
         onClick={handleNav}
         className={
           nav
-            ? "absolute text-black left-0 top-0 w-full h-screen bg-gray-100/90 px-4 py-6 z-[1] flex flex-col md:hidden"
+            ? "fixed text-black left-0 top-0 w-full h-screen bg-gray-100/90 px-4 py-6 z-[1] flex flex-col md:hidden"
             : "absolute left-[-100%]"
         }
       >
