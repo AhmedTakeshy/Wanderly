@@ -149,7 +149,7 @@ const Nav = () => {
                 className="mt-6"
                 onClick={() =>
                   loginWithRedirect({
-                    redirectUri: window.location.origin + location.pathname,
+                    // redirectUri: window.location.origin + location.pathname,
                   })
                 }
               >
@@ -162,7 +162,7 @@ const Nav = () => {
                 onClick={() =>
                   logout({
                     logoutParams: {
-                      returnTo: window.location.origin + target,
+                      // returnTo: window.location.origin + target,
                     },
                   })
                 }

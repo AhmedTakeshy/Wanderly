@@ -135,7 +135,7 @@ const SearchForm = () => {
             <input
               id="departure"
               name="departureDate"
-              className="border rounded-md p-2"
+              className="border rounded-md p-2 w-full"
               type="date"
               required
               onInvalid={invalidHandler}
@@ -148,7 +148,7 @@ const SearchForm = () => {
               <input
                 id="return"
                 name="returnDate"
-                className="border rounded-md p-2"
+                className="border rounded-md p-2 w-full"
                 type="date"
                 required
                 onInvalid={invalidHandler}
