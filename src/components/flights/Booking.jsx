@@ -2,16 +2,29 @@ import { RiCustomerService2Fill } from "react-icons/ri";
 import { MdOutlineTravelExplore } from "react-icons/md";
 import { useForm } from "react-hook-form";
 import { MdFlightTakeoff, MdFlightLand } from "react-icons/md";
-
+import { useFetcher } from "react-router-dom";
+import { useState } from "react";
 const SearchForm = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-  const onSubmit = (data) => console.log(data);
-  console.log(errors);
+  const fetcher = useFetcher();
+  const [showDate, setShowDate] = useState(true);
+  const { data, state } = fetcher;
 
+  const dateHandler = (e) => {
+    if (e.target.value === "ONE_WAY") {
+      setShowDate(false);
+    } else {
+      setShowDate(true);
+    }
+  };
+
+  const invalidHandler = (e) => {
+    console.log(e);
+    e.target.setCustomValidity(`⚠ ${e.target.name} is required`);
+  };
+
+  const validHandler = (e) => {
+    e.target.setCustomValidity("");
+  };
   return (
     <div className="max-w-[1240px] mx-auto grid lg:grid-cols-3 gap-4 py-16">
       <div className="lg:col-span-2 flex flex-col justify-between">
@@ -60,20 +73,37 @@ const SearchForm = () => {
           <p className="py-4">12 HOURS LEFT</p>
           <p className="bg-gray-800 text-gray-200 py-2">BOOK NOW AND SAVE</p>
         </div>
-        <form
-          onSubmit={handleSubmit(onSubmit)}
+        <fetcher.Form
+          action="/flights"
+          method="post"
           className="w-full focus:outline-none"
         >
-          <div className="flex flex-col my-4 relative">
-            <label htmlFor="trip">Trip-type</label>
-            <select
-              id="trip"
-              className="border rounded-md p-2"
-              {...register("trip", { required: true })}
-            >
-              <option value="round">Round-trip</option>
-              <option value="oneWay">One-Way</option>
-            </select>
+          <div className="flex justify-between items-center gap-4">
+            <div className="flex flex-col my-4 w-2/4">
+              <label htmlFor="trip">Trip-type</label>
+              <select
+                id="trip"
+                name="trip"
+                className="border rounded-md p-2"
+                onChange={dateHandler}
+              >
+                <option value="ROUNDED_TRIP">Round-trip</option>
+                <option value="ONE_WAY">One-Way</option>
+              </select>
+            </div>
+            <div className="flex flex-col my-4 w-2/4">
+              <label htmlFor="classes">Class</label>
+              <select
+                id="classes"
+                name="classes"
+                className="border rounded-md p-2"
+              >
+                <option value="ECO">Economy</option>
+                <option value="PEC">Premium economy</option>
+                <option value="BUS">Business</option>
+                <option value="FST">First</option>
+              </select>
+            </div>
           </div>
           <div className="flex flex-col my-2">
             <label>Destination</label>
@@ -81,43 +111,56 @@ const SearchForm = () => {
               <input
                 placeholder="From?"
                 type="text"
-                name="CityFrom"
-                {...register("CityFrom", { required: true })}
+                name="cityFrom"
                 className="border rounded-md p-2 w-2/4"
+                required
+                onInvalid={invalidHandler}
+                onInput={validHandler}
               />
               <MdFlightTakeoff className="text-black absolute left-[8rem] md:left-[9.5rem] top-[50%]  translate-y-[-50%]" />
               <input
                 placeholder="To?"
                 type="text"
-                name="CityTo"
-                {...register("CityTo", { required: true })}
+                name="cityTo"
                 className="border rounded-md p-2 w-2/4"
+                required
+                onInvalid={invalidHandler}
+                onInput={validHandler}
               />
               <MdFlightLand className="text-black absolute right-2 top-[50%] translate-y-[-50%]" />
             </div>
           </div>
           <div className="flex flex-col my-4">
-            <label htmlFor="departure">Departure</label>
+            <label htmlFor="departure">Departure date</label>
             <input
               id="departure"
-              name="departure_date"
+              name="departureDate"
               className="border rounded-md p-2"
               type="date"
-              {...register("departure_date", { required: true })}
+              required
+              onInvalid={invalidHandler}
+              onInput={validHandler}
             />
           </div>
-          <div className="flex flex-col my-2">
-            <label htmlFor="return">Return</label>
-            <input
-              id="return"
-              name="return_date"
-              className="border rounded-md p-2"
-              type="date"
-              {...register("return_date", { required: true })}
-            />
-          </div>
+          {showDate && (
+            <div className="flex flex-col my-2">
+              <label htmlFor="return">Return date</label>
+              <input
+                id="return"
+                name="returnDate"
+                className="border rounded-md p-2"
+                type="date"
+                required
+                onInvalid={invalidHandler}
+                onInput={validHandler}
+              />
+              {/* {errors.returnDate && (
+                <p className="text-rose-500">⚠ Date is required</p>
+              )} */}
+            </div>
+          )}
           <button className="w-full my-4">Search</button>
-        </form>
+        </fetcher.Form>
       </div>
     </div>
   );

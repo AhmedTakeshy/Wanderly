@@ -5,7 +5,7 @@ import HomePage from "./pages/HomePage";
 import HotelsPage from "./pages/HotelsPage";
 import HotelDetails, { hotelDetailsLoader } from "./pages/HotelDetails";
 import HotelsLayout from "./layouts/HotelLayout";
-import { HotelsAction } from "./helpers";
+import { flightsAction, HotelsAction } from "./helpers";
 import PropagateLoader from "react-spinners/PropagateLoader";
 
 import CarPage from "./pages/CarPage";
@@ -42,6 +42,7 @@ const router = createBrowserRouter([
       {
         path: "flights",
         element: <FlightPage />,
+        action: flightsAction,
       },
       {
         path: "car",
