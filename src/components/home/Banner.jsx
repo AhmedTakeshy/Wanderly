@@ -19,7 +19,10 @@ const Banner = () => {
   let isMounted = useRef(false);
 
   const { data, state } = fetcher;
+  // capitalize the first letter of the city
   const city = fetcher.formData?.get("city");
+  const capitalizedCity = city?.charAt(0).toUpperCase() + city?.slice(1);
+  console.log(capitalizedCity);
   const date = fetcher.formData?.get("date");
   const rooms = fetcher.formData?.get("rooms");
   const existedCities = useSelector((state) => state.search?.searchHistory);
@@ -41,9 +44,11 @@ const Banner = () => {
       }
       if (data?.AllHotelsData && data?.imgUrl && city && date && rooms) {
         const url = data.imgUrl[0]?.image_url;
-        const result = existedCities.map((item) => item.city);
-        if (!result.includes(city)) {
-          dispatch(searchActions.addSearchData({ city, date, rooms }));
+        const result = existedCities.map((item) => item.capitalizedCity);
+        if (!result.includes(capitalizedCity)) {
+          dispatch(
+            searchActions.addSearchData({ capitalizedCity, date, rooms })
+          );
           dispatch(searchActions.addSearchImg(url));
         }
       }

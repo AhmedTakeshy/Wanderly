@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { useState } from "react";
 import PropagateLoader from "react-spinners/PropagateLoader";
 import ProtectedRoute from "../../components/authentication/ProtectedRoute";
-import DestinationCard from "../../components/destination/DestinationCard";
+import DestinationCard from "../../components/home/destination/DestinationCard";
 import Title from "../../components/UI/Title";
 
 const Profile = () => {
@@ -34,27 +34,27 @@ const Profile = () => {
   return (
     isAuthenticated && (
       <>
-        <div className="bg-bgProfile bg-cover bg-center mb-8 h-screen w-full flex flex-row justify-center items-center">
-          <div className="w-96 text-center bg-white rounded flex flex-col justify-center items-center shadow-2xl hover:shadow transition duration-500">
+        <div className="flex flex-row items-center justify-center w-full h-screen mb-8 bg-center bg-cover bg-bgProfile">
+          <div className="flex flex-col items-center justify-center text-center transition duration-500 bg-white rounded shadow-2xl w-96 hover:shadow">
             <img
-              className="w-32 object-cover text-center rounded-full -mt-20 border-4 border-custom_purple"
+              className="object-cover w-32 -mt-20 text-center border-4 rounded-full border-custom_purple"
               src={user.picture}
               alt={user.name}
             />
-            <div className="text-center mt-2 text-3xl font-medium">
+            <div className="mt-2 text-3xl font-medium text-center">
               {user.name}
             </div>
-            <div className="text-center mt-2 font-light text-sm">
+            <div className="mt-2 text-sm font-light text-center">
               @{user.nickname}
             </div>
-            <div className="px-6 text-center mt-8 font-light text-sm">
+            <div className="px-6 mt-8 text-sm font-light text-center">
               <p>Last updated {user.updated_at}</p>
             </div>
             <hr className="mt-2" />
             <div className="flex w-full p-4">
               <div className="w-1/2 text-center">
                 <button
-                  className="w-4/5 flex-1 bg-transparent border-2 border-custom_purple hover:border-none hover:bg-custom_purple hover:text-white transition duration-500 text-black"
+                  className="flex-1 w-4/5 text-black transition duration-500 bg-transparent border-2 border-custom_purple hover:border-none hover:bg-custom_purple hover:text-white"
                   onClick={toggleWishlistHandler}
                 >
                   Wishlist
@@ -63,7 +63,7 @@ const Profile = () => {
               <div className="w-0 border border-gray-300"></div>
               <div className="w-1/2 text-center">
                 <button
-                  className="w-4/5 flex-1 bg-transparent border-2 border-custom_purple hover:border-none hover:bg-custom_purple hover:text-white transition duration-500 text-black"
+                  className="flex-1 w-4/5 text-black transition duration-500 bg-transparent border-2 border-custom_purple hover:border-none hover:bg-custom_purple hover:text-white"
                   onClick={() =>
                     logout({
                       logoutParams: { returnTo: window.location.origin },
@@ -79,7 +79,7 @@ const Profile = () => {
         {showWishlist && (
           <>
             <Title title="Your favorite Destinations" />
-            <div className="mx-16 pb-32 pt-4 grid lg:grid-cols-3 md:grid-cols-2 gap-4">
+            <div className="grid gap-4 pt-4 pb-32 mx-16 lg:grid-cols-3 md:grid-cols-2">
               {destinationData.map((destination, index) => (
                 <DestinationCard
                   key={index}

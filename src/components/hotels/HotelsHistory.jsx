@@ -11,13 +11,13 @@ const HotelsHistory = () => {
       <>
         <Title title="Your recent searches" />
         <div className="flex flex-col justify-start pb-8 mx-16">
-          <div className=" grid lg:grid-cols-3 md:grid-cols-2 gap-5">
+          <div className="grid gap-5  lg:grid-cols-3 md:grid-cols-2">
             {!isAuthenticated
               ? searchData.slice(0, 3).map((hotel, index) => (
                   <Link to="hotels" key={index} state={{ id: index }}>
                     <HotelsHistoryCard
                       id={index}
-                      name={hotel.city}
+                      name={hotel.capitalizedCity}
                       date={hotel.date}
                       rooms={hotel.rooms}
                       src={hotel.url}
@@ -28,7 +28,7 @@ const HotelsHistory = () => {
                   <Link to="hotels" key={index} state={{ id: index }}>
                     <HotelsHistoryCard
                       id={index}
-                      name={hotel.city}
+                      name={hotel.capitalizedCity}
                       date={hotel.date}
                       rooms={hotel.rooms}
                       src={hotel.url}
@@ -37,10 +37,10 @@ const HotelsHistory = () => {
                 ))}
           </div>
           {!isAuthenticated && searchData.length >= 3 && (
-            <h2 className="text-xl inline-block mt-6 ">
+            <h2 className="inline-block mt-6 text-xl ">
               For more recent searches please
               <span
-                className="cursor-pointer transition duration-300 ml-1 underline hover:text-teal-500"
+                className="ml-1 underline transition duration-300 cursor-pointer hover:text-teal-500"
                 onClick={() => loginWithRedirect()}
               >
                 login
