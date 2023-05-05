@@ -25,6 +25,14 @@ const Banner = () => {
   const existedCities = useSelector((state) => state.search?.searchHistory);
   const isSubmitting = state === "submitting";
 
+  const invalidHandler = (e) => {
+    e.target.setCustomValidity(`⚠ ${e.target.name} is required`);
+  };
+
+  const validHandler = (e) => {
+    e.target.setCustomValidity("");
+  };
+
   useEffect(() => {
     if (isMounted.current) {
       if (data?.AllHotelsData && state === "idle") {
@@ -48,15 +56,15 @@ const Banner = () => {
   }, [data, state]);
 
   return (
-    <div className=" w-full h-screen relative">
+    <div className="relative w-full h-screen ">
       <video
-        className="w-full h-full object-cover"
+        className="object-cover w-full h-full"
         autoPlay
         muted
         loop
         src={bannerVid}
       />
-      <div className="absolute top-0 w-full h-full flex flex-col justify-center text-center text-white p-4">
+      <div className="absolute top-0 flex flex-col justify-center w-full h-full p-4 text-center text-white">
         <h1>First Class Travel</h1>
         <h2 className="py-4">Top 1% Locations Worldwide</h2>
         <fetcher.Form
@@ -65,22 +73,24 @@ const Banner = () => {
           className="flex justify-between items-center flex-col md:flex-row max-w-[700px] mx-auto w-full border p-1
           rounded-lg text-black bg-gray-100/90"
         >
-          <div className="flex flex-col justify-between w-full md:w-auto px-4 md:px-0 md:gap-4  md:flex-row">
-            <div className="flex justify-start gap-2 items-center">
+          <div className="flex flex-col justify-between w-full px-4 md:w-auto md:px-0 md:gap-4 md:flex-row">
+            <div className="flex items-center justify-start gap-2">
               <GoLocation size={18} className="icon" />
               <input
-                className="bg-transparent focus:outline-none p-2 font-semibold border-none"
+                className="p-2 font-semibold bg-transparent border-none focus:outline-none"
                 type="text"
                 name="city"
                 placeholder="Where to go"
                 required
+                onInvalid={invalidHandler}
+                onInput={validHandler}
               />
             </div>
-            <div className="flex justify-start gap-2 items-center">
+            <div className="flex items-center justify-start gap-2">
               <SlCalender size={18} className="icon" />
               <DateRangeComp />
             </div>
-            <div className="flex justify-start gap-2  items-center">
+            <div className="flex items-center justify-start gap-2">
               <BsPeople size={18} className="icon" />
               <input
                 className="bg-transparent focus:outline-none p-2 w-[130px] font-semibold border-none" //w-[300px] sm:w-[400px]
@@ -90,20 +100,22 @@ const Banner = () => {
                 min="1"
                 placeholder="Rooms"
                 required
+                onInvalid={invalidHandler}
+                onInput={validHandler}
               />
             </div>
           </div>
-          <div className=" md:w-auto w-full">
+          <div className="w-full md:w-auto">
             <button
-              className="md:m-1 w-full md:w-auto"
+              className="w-full md:m-1 md:w-auto"
               type="submit"
               disabled={isSubmitting}
             >
-              <span className="md:hidden inline font-bold tracking-widest">
+              <span className="inline font-bold tracking-widest md:hidden">
                 {isSubmitting ? (
-                  <span className="flex items-center justify-center">
-                    <svg className="animate-spin h-5 w-5 mr-3">
-                      <ImSpinner9 size={20} className="md:hidden inline" />
+                  <span className="flex items-center justify-center cursor-progress">
+                    <svg className="w-5 h-5 mr-3 animate-spin">
+                      <ImSpinner9 size={20} className="inline md:hidden" />
                     </svg>
                     Submitting
                   </span>
@@ -112,17 +124,17 @@ const Banner = () => {
                 )}
               </span>
               {isSubmitting ? (
-                <svg className="animate-spin h-5 w-5 hidden md:inline">
+                <svg className="hidden w-5 h-5 animate-spin md:inline cursor-progress">
                   <ImSpinner9
                     size={20}
-                    className="icon hidden md:inline"
+                    className="hidden icon md:inline"
                     style={{ color: "#ffffff" }}
                   />
                 </svg>
               ) : (
                 <AiOutlineSearch
                   size={20}
-                  className="icon hidden md:inline"
+                  className="hidden icon md:inline"
                   style={{ color: "#ffffff" }}
                 />
               )}

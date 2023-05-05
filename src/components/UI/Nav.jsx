@@ -46,13 +46,13 @@ const Nav = () => {
     >
       <h1 className={logo ? "hidden md:block" : "block"}>
         <NavLink to="/">
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary text-5xl md:text-6xl">
+          <span className="text-5xl text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary md:text-6xl">
             W
           </span>
           anderly
         </NavLink>
       </h1>
-      <ul className="hidden md:flex items-center  text-xl">
+      <ul className="items-center hidden text-xl md:flex">
         <li>
           <NavLink
             className={({ isActive }) =>
@@ -73,7 +73,7 @@ const Nav = () => {
             Flights
           </NavLink>
         </li>
-        <li>
+        {/* <li>
           <NavLink
             className={({ isActive }) =>
               isActive ? `underline underline-offset-4` : "hover:text-black"
@@ -82,7 +82,7 @@ const Nav = () => {
           >
             Car Hire
           </NavLink>
-        </li>
+        </li> */}
         <li>
           <NavLink
             className={({ isActive }) =>
@@ -95,7 +95,7 @@ const Nav = () => {
         </li>
       </ul>
       <div
-        className=" hidden md:flex justify-between items-center px-4 gap-x-2"
+        className="items-center justify-between hidden px-4  md:flex gap-x-2"
         onClick={showComponentHandler}
       >
         <Dropdown status={showComponent} />
@@ -105,11 +105,11 @@ const Nav = () => {
       <div onClick={handleNav} className="md:hidden z-[2] right-2 absolute">
         {nav ? (
           <AiOutlineClose
-            className="text-black fixed right-4 top-10"
+            className="fixed text-black right-4 top-10"
             size={25}
           />
         ) : (
-          <HiOutlineMenuAlt4 className=" relative top-1" size={25} />
+          <HiOutlineMenuAlt4 className="relative  top-1" size={25} />
         )}
       </div>
 
@@ -123,7 +123,7 @@ const Nav = () => {
         }
       >
         <h1>
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary text-5xl">
+          <span className="text-5xl text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
             W
           </span>
           anderly
@@ -135,9 +135,9 @@ const Nav = () => {
           <li className="border-b">
             <NavLink to="/flights">Flights</NavLink>
           </li>
-          <li className="border-b">
+          {/* <li className="border-b">
             <NavLink to="/car">Car hire</NavLink>
-          </li>
+          </li> */}
           <li className="border-b">
             <NavLink to="/about">About Us</NavLink>
           </li>

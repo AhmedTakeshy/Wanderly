@@ -67,33 +67,35 @@ export const flightsAction = async ({ request }) => {
         : cityFromRes.data[0].id;
     const cityToId =
       cityToRes.data[0].lat === 0 ? cityToRes.data[1].id : cityToRes.data[0].id;
-    const url =
-      "https://priceline-com-provider.p.rapidapi.com/v1/flights/search";
-    const options = {
-      params: {
-        date_departure: departureDate,
-        location_departure: cityFromId,
-        class_type: classes,
-        sort_order: "PRICE",
-        itinerary_type: trip,
-        location_arrival: cityToId,
-        price_max: "20000",
-        price_min: "100",
-        number_of_stops: "1",
-        date_departure_return: returnDate,
-        number_of_passengers: "1",
-        duration_max: "2051",
-      },
-      headers: {
-        "X-RapidAPI-Key": import.meta.env.VITE_PRICELINE_PROVIDER,
-        "X-RapidAPI-Host": "priceline-com-provider.p.rapidapi.com",
-      },
-    };
+    if (cityFromId && cityToId) {
+      const options = {
+        method: "GET",
+        url: "https://priceline-com-provider.p.rapidapi.com/community/v1/flights/search",
+        params: {
+          location_arrival: cityToId,
+          sort_order: "PRICE",
+          date_departure: departureDate,
+          itinerary_type: trip,
+          class_type: classes,
+          location_departure: cityFromId,
+          number_of_stops: "1",
+          price_max: "20000",
+          number_of_passengers: "1",
+          duration_max: "2051",
+          price_min: "100",
+          date_departure_return: returnDate,
+        },
+        headers: {
+          "X-RapidAPI-Key": import.meta.env.VITE_PRICELINE_PROVIDER,
+          "X-RapidAPI-Host": "priceline-com-provider.p.rapidapi.com",
+        },
+      };
 
-    const { data } = await axios.get(url, options);
-    console.log(data);
-    return { data };
+      const { data } = await axios.request(options);
+      return data;
+    }
+    return { message: "Could not fetch flights data." };
   } catch (error) {
-    console.error(error);
+    console.log(error);
   }
 };

@@ -30,13 +30,13 @@ const HotelItem = ({ hotel }) => {
   };
   return (
     <>
-      <div key={hotel.hotelId} className="mx-auto sm:px-6 lg:px-8 mt-6">
+      <div key={hotel.hotelId} className="mx-auto mt-6 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row">
-          <div className="overflow-auto md:w-1/4 px-4 scrollbar-hide">
-            <h2 className="mb-2 leading-tight tracking-tight font-bold text-gray-800 text-2xl md:text-3xl">
+          <div className="px-4 overflow-auto md:w-1/4 scrollbar-hide">
+            <h2 className="mb-2 text-2xl font-bold leading-tight tracking-tight text-gray-800 md:text-3xl">
               {hotel.name}
             </h2>
-            <p className="text-gray-500 text-sm mb-4">
+            <p className="mb-4 text-sm text-gray-500">
               Brand:{" "}
               <a
                 href={`https://www.google.com/search?q=${hotel.brand}`}
@@ -49,14 +49,14 @@ const HotelItem = ({ hotel }) => {
             <p className="text-gray-500">
               {hotel.location.address.addressLine1},
             </p>
-            <p className="text-gray-500 mb-4">
+            <p className="mb-4 text-gray-500">
               {hotel.location.address.cityName},{" "}
               {hotel.location.address.countryName}
             </p>
             <Map location={hotel.location} />
-            <div className="sm:flex md:hidden xl:flex lg:hidden flex-col my-4  ">
-              <div className="flex justify-end w-full h-16 px-2 items-center rounded-sm bg-gray-100/90 ">
-                <div className="flex flex-col justify-center items-center mr-2">
+            <div className="flex-col my-4 sm:flex md:hidden xl:flex lg:hidden ">
+              <div className="flex items-center justify-end w-full h-16 px-2 rounded-sm bg-gray-100/90 ">
+                <div className="flex flex-col items-center justify-center mr-2">
                   <TypeAnimation
                     sequence={[
                       "Fabulous",
@@ -88,15 +88,15 @@ const HotelItem = ({ hotel }) => {
                     {hotel.guestReviews?.length} reviews
                   </span>
                 </div>
-                <span className="w-12 h-9 rounded-md flex items-center justify-center bg-custom_purple text-white font-bold">
+                <span className="flex items-center justify-center w-12 font-bold text-white rounded-md h-9 bg-custom_purple">
                   {hotel.overallGuestRating}
                 </span>
               </div>
             </div>
             <SimCarousel reviews={hotel.guestReviews} />
           </div>
-          <div className="md:w-3/4 px-4 ">
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+          <div className="px-4 md:w-3/4 ">
+            <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
               <img
                 className="h-full"
                 src={hotel?.images[3].imageHDUrl}
@@ -108,7 +108,7 @@ const HotelItem = ({ hotel }) => {
                 alt={`${hotel.name} img 2`}
               />
               <img
-                className="h-full w-full col-span-2 md:col-start-2 row-span-2 md:col-end-4 md:row-start-1 md:row-end-3 -order-1 object-cover"
+                className="object-cover w-full h-full col-span-2 row-span-2 md:col-start-2 md:col-end-4 md:row-start-1 md:row-end-3 -order-1"
                 src={hotel?.images[0].imageHDUrl}
                 alt={`${hotel.name} img 0`}
               />
@@ -134,14 +134,14 @@ const HotelItem = ({ hotel }) => {
             </Carousel>
           </div>
         </div>
-        <div className="flex flex-col md:flex-row my-8">
-          <div className="md:w-3/4 px-4">
-            <p className="text-gray-500 mb-6">
+        <div className="flex flex-col my-8 md:flex-row">
+          <div className="px-4 md:w-3/4">
+            <p className="mb-6 text-gray-500">
               {hotel.description.substring(0, 401)}
               {!substring && (
                 <span
                   onClick={() => setSubstring((prev) => !prev)}
-                  className="text-teal-500 hover:text-teal-300 hover:cursor-pointer text-xs"
+                  className="text-xs text-teal-500 hover:text-teal-300 hover:cursor-pointer"
                 >
                   ...Show more
                 </span>
@@ -150,7 +150,7 @@ const HotelItem = ({ hotel }) => {
               {substring && (
                 <span
                   onClick={() => setSubstring((prev) => !prev)}
-                  className="text-teal-500 hover:text-teal-300 hover:cursor-pointer text-xs"
+                  className="text-xs text-teal-500 hover:text-teal-300 hover:cursor-pointer"
                 >
                   ...Show less
                 </span>
@@ -178,34 +178,37 @@ const HotelItem = ({ hotel }) => {
                 </p>
               </article>
               <article className="my-4">
-                <h3 className="text-xl font-semibold flex items-center">
+                <h3 className="flex items-center text-xl font-semibold">
                   <MdLabelImportant />
                   Important information
                 </h3>
-                {hotel.policies.importantInfo.map((info, index) => (
-                  <p key={index} className="text-gray-500 mb-4">
-                    {info}.
-                  </p>
-                ))}
+                {hotel.policies.importantInfo &&
+                  hotel.policies.importantInfo.map((info, index) => (
+                    <p key={index} className="mb-4 text-gray-500">
+                      {info}.
+                    </p>
+                  ))}
               </article>
             </div>
           </div>
-          <div className="flex flex-wrap h-[31.5rem] md:w-1/4 overscroll-none overflow-auto mx-2 py-4 bg-gradient-to-tl from-[#0cebeb] via-[#20e3b2] to-[#29ffc6] rounded-md">
-            <h2 className="text-black font-bold text-2xl px-2 mb-4">
+          <div className="flex flex-col items-center justify-between gap-4 mx-2 mt-4 text-center md:w-1/4">
+            <h2 className="text-black w-full font-bold text-2xl px-2 mb-4 py-2 bg-gradient-to-tl from-[#0cebeb] via-[#20e3b2] to-[#29ffc6] rounded-md">
               Most popular facilities
             </h2>
-            {hotel.hotelFeatures.features.map((feature, index) => (
-              <p
-                key={index}
-                className="bg-transparent text-black border-2 rounded border-black p-2 m-2"
-              >
-                {feature}
-              </p>
-            ))}
+            <div className="flex flex-wrap h-[31.5rem] w-full md:overscroll-none overscroll-auto overflow-auto mx-2 py-4 bg-gradient-to-tl from-[#0cebeb] via-[#20e3b2] to-[#29ffc6] rounded-md">
+              {hotel.hotelFeatures.features.map((feature, index) => (
+                <p
+                  key={index}
+                  className="p-2 m-2 text-black bg-transparent border-2 border-black rounded"
+                >
+                  {feature}
+                </p>
+              ))}
+            </div>
+            <button className="w-full px-4 py-2 mt-4 text-xl font-bold text-white rounded-md bg-custom_purple md:mt-0">
+              Reserve
+            </button>
           </div>
-          <button className="bg-custom_purple text-white font-bold text-xl rounded-md px-4 py-2 mt-4 md:mt-0">
-            Reserve
-          </button>
         </div>
       </div>
     </>

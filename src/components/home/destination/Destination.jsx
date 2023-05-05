@@ -1,15 +1,15 @@
 import DestinationCard from "./DestinationCard";
-import Title from "../UI/Title";
+import Title from "../../UI/Title";
 
-import cairo from "../../assets/cairo.jpg";
-import cappadocia from "../../assets/Cappadocia.jpg";
-import rome from "../../assets/rome.jpg";
-import paris from "../../assets/paris.jpg";
-import spain from "../../assets/spain.jpg";
-import canada from "../../assets/canada.jpg";
-import dubai from "../../assets/dubai.jpg";
-import pakistan from "../../assets/pakistan.jpg";
-import sriLanka from "../../assets/sri-lanka.jpg";
+import cairo from "../../../assets/cairo.jpg";
+import cappadocia from "../../../assets/Cappadocia.jpg";
+import rome from "../../../assets/rome.jpg";
+import paris from "../../../assets/paris.jpg";
+import spain from "../../../assets/spain.jpg";
+import canada from "../../../assets/canada.jpg";
+import dubai from "../../../assets/dubai.jpg";
+import pakistan from "../../../assets/pakistan.jpg";
+import sriLanka from "../../../assets/sri-lanka.jpg";
 
 const destinationData = [
   {
@@ -63,7 +63,7 @@ const Destination = () => {
   return (
     <>
       <Title title="Popular Destinations" />
-      <div className="mx-16 pb-32 pt-4 grid lg:grid-cols-3 md:grid-cols-2 gap-4">
+      <div className="grid gap-4 pt-4 pb-32 mx-16 lg:grid-cols-3 md:grid-cols-2">
         {destinationData.map((destination, index) => (
           <DestinationCard
             key={index}

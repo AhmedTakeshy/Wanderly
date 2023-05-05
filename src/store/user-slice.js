@@ -18,7 +18,6 @@ const user = createSlice({
       }
     },
     removeDestination(state, action) {
-      // check if destination already exists
       const existingDestination = state.destinations.find(
         (destination) => destination.id === action.payload.id
       );

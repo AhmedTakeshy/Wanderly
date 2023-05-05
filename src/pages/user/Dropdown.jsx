@@ -6,7 +6,11 @@ import { Link, useLocation } from "react-router-dom";
 const Dropdown = ({ status }) => {
   const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
   const location = useLocation();
+  console.log(location);
   const target = location.pathname === "/profile" ? "/" : location.pathname;
+  if (!isAuthenticated && /^\/(?:flights|hotels)\//.test(location.pathname)) {
+    return;
+  }
   return (
     <div className="flex justify-center">
       <div className="relative">
@@ -19,15 +23,15 @@ const Dropdown = ({ status }) => {
             />
           )
         ) : (
-          <BiUser size={25} className="hover:text-black cursor-pointer" />
+          <BiUser size={25} className="cursor-pointer hover:text-black" />
         )}
         {status && (
-          <div className="absolute right-0 w-36 mt-2 py-2 bg-white border rounded shadow-xl">
+          <div className="absolute right-0 py-2 mt-2 bg-white border rounded shadow-xl w-36">
             {isAuthenticated ? (
               <>
                 <Link
                   to="profile"
-                  className="cursor-pointer transition duration-500 block px-2 py-1 text-normal text-gray-900 rounded hover:translate-x-3"
+                  className="block px-2 py-1 text-gray-900 transition duration-500 rounded cursor-pointer text-normal hover:translate-x-3"
                 >
                   Profile
                 </Link>
@@ -42,14 +46,14 @@ const Dropdown = ({ status }) => {
                       },
                     })
                   }
-                  className="cursor-pointer transition duration-500 block px-2 py-1 text-normal text-gray-900 rounded hover:translate-x-3"
+                  className="block px-2 py-1 text-gray-900 transition duration-500 rounded cursor-pointer text-normal hover:translate-x-3"
                 >
                   Logout
                 </span>
               </>
             ) : (
               <span
-                className="cursor-pointer transition duration-500 block px-2 py-1 text-normal text-gray-900 rounded hover:translate-x-3"
+                className="block px-2 py-1 text-gray-900 transition duration-500 rounded cursor-pointer text-normal hover:translate-x-3"
                 onClick={() =>
                   loginWithRedirect({
                     redirectUri: window.location.origin + location.pathname,

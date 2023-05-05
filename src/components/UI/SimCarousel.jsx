@@ -32,35 +32,37 @@ const SimCarousel = ({ reviews }) => {
       <BsArrowLeftSquareFill
         onClick={prevSlide}
         size={20}
-        className="absolute text-3xl text-custom_purple cursor-pointer left-2"
+        className="absolute text-3xl cursor-pointer text-custom_purple left-2"
       />
       <BsArrowRightSquareFill
         onClick={nextSlide}
         size={20}
-        className="absolute text-3xl text-custom_purple cursor-pointer right-2"
+        className="absolute text-3xl cursor-pointer text-custom_purple right-2"
       />
       <div className="bg-gray-100  rounded-t-md w-full h-[9.5rem] flex flex-col items-center justify-center transition-opacity duration-500 ease-in-out">
-        {reviews.map(
-          (item, index) =>
-            index === slide && (
-              <div
-                key={index}
-                className="flex flex-col w-full items-center justify-between flex-1"
-              >
-                <p className="p-2 w-4/5 text-center h-20 overscroll-none overflow-auto">
-                  {`${
-                    item.reviewTextGeneral
-                      ? item.reviewTextGeneral
-                      : "It was nice"
-                  }
+        {reviews
+          ? reviews.map(
+              (item, index) =>
+                index === slide && (
+                  <div
+                    key={index}
+                    className="flex flex-col items-center justify-between flex-1 w-full"
+                  >
+                    <p className="w-4/5 h-20 p-2 overflow-auto text-center overscroll-none">
+                      {`${
+                        item.reviewTextGeneral
+                          ? item.reviewTextGeneral
+                          : "It was nice"
+                      }
                 ${item.reviewTextPositive}`}
-                </p>
-                <p className="bg-custom_purple text-white w-full rounded-b-md text-center mt-auto">
-                  {item.firstName} - {item.overallScore} / 10.0
-                </p>
-              </div>
+                    </p>
+                    <p className="w-full mt-auto text-center text-white bg-custom_purple rounded-b-md">
+                      {item.firstName} - {item.overallScore} / 10.0
+                    </p>
+                  </div>
+                )
             )
-        )}
+          : "No reviews yet"}
       </div>
     </div>
   );

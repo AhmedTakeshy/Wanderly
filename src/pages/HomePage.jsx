@@ -1,5 +1,5 @@
 import Banner from "../components/home/Banner";
-import Destination from "../components/destination/Destination";
+import Destination from "../components/home/destination/Destination";
 import HotelsHistory from "../components/hotels/HotelsHistory";
 
 const HomePage = () => {

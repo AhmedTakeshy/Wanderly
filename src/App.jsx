@@ -12,6 +12,8 @@ import CarPage from "./pages/CarPage";
 import AboutPage from "./pages/AboutPage";
 import ProfilePage from "./pages/user/ProfilePage";
 import FlightPage from "./pages/FlightPage";
+import Ticket from "./components/flights/Ticket";
+import FlightsLayout from "./layouts/FlightsLayout";
 
 const router = createBrowserRouter([
   {
@@ -40,9 +42,19 @@ const router = createBrowserRouter([
         ],
       },
       {
-        path: "flights",
-        element: <FlightPage />,
+        path: "/flights",
+        element: <FlightsLayout />,
         action: flightsAction,
+        children: [
+          {
+            index: true,
+            element: <FlightPage />,
+          },
+          {
+            path: ":id",
+            element: <Ticket />,
+          },
+        ],
       },
       {
         path: "car",
@@ -65,7 +77,7 @@ function App() {
       router={router}
       fallbackElement={
         <PropagateLoader
-          className="flex justify-center items-center"
+          className="flex items-center justify-center"
           color="#36d7b7"
           cssOverride={{
             margin: "1rem auto",

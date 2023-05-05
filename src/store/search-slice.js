@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = { hotelsData: [], searchHistory: [] };
+const initialState = { hotelsData: [], searchHistory: [], flightsData: [] };
 const searchSlice = createSlice({
   name: "ui",
   initialState: initialState,
@@ -14,6 +14,9 @@ const searchSlice = createSlice({
     addSearchImg(state, action) {
       const index = state.searchHistory.length - 1;
       state.searchHistory[index].url = action.payload;
+    },
+    addFlightsData(state, action) {
+      state.flightsData.push(action.payload);
     },
   },
 });
