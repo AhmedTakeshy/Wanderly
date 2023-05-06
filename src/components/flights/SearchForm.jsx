@@ -1,42 +1,48 @@
 import { RiCustomerService2Fill } from "react-icons/ri";
 import { MdOutlineTravelExplore } from "react-icons/md";
-import { useDispatch, useSelector } from "react-redux";
 import { MdFlightTakeoff, MdFlightLand } from "react-icons/md";
 import { useFetcher } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { searchActions } from "../../store/search-slice";
+import { useCallback, useEffect, useRef, useState } from "react";
+import FlightsFilter from "./FlightsFilter";
 import FlightItem from "./FlightItem";
 import { ImSpinner9 } from "react-icons/im";
 import { PropagateLoader } from "react-spinners";
 const SearchForm = () => {
   const fetcher = useFetcher();
-  const [showDate, setShowDate] = useState(true);
+  const { data, state } = fetcher;
+  const [showDate, setShowDate] = useState(false);
   const [showMore, setShowMore] = useState(false);
   const [flightsData, setFlightsData] = useState();
-  const { data, state } = fetcher;
-  const dispatch = useDispatch();
+  const [isDataRendered, setIsDataRendered] = useState(false);
+
+  const form = useRef();
   const isSubmitting = state === "submitting";
+
   useEffect(() => {
     if (data && state === "idle") {
-      setFlightsData(data);
+      if (isDataRendered) return;
+      setFlightsData(data.listings);
+      form.current.reset();
     }
-  }, [dispatch, data, state, flightsData]);
+    console.log(flightsData);
+    console.log(isDataRendered);
+  }, [data, state, flightsData]);
 
   const showMoreHandler = () => {
     setShowMore((prev) => !prev);
     if (showMore) {
       window.scrollTo({
-        top: 1400,
+        top: 1300,
         behavior: "smooth",
       });
     }
   };
 
   const dateHandler = (e) => {
-    if (e.target.value === "ONE_WAY") {
-      setShowDate(false);
-    } else {
+    if (e.target.value === "ROUND_TRIP") {
       setShowDate(true);
+    } else {
+      setShowDate(false);
     }
   };
 
@@ -46,6 +52,15 @@ const SearchForm = () => {
 
   const validHandler = (e) => {
     e.target.setCustomValidity("");
+  };
+
+  const filterHandler = (newData) => {
+    setFlightsData(newData);
+    setIsDataRendered(true);
+  };
+
+  const updateStateHandler = () => {
+    setIsDataRendered(false);
   };
   return (
     <>
@@ -101,6 +116,8 @@ const SearchForm = () => {
             action="/flights"
             method="post"
             className="w-full focus:outline-none"
+            ref={form}
+            onSubmit={updateStateHandler}
           >
             <div className="flex items-center justify-between gap-4">
               <div className="flex flex-col w-2/4 my-4">
@@ -108,11 +125,11 @@ const SearchForm = () => {
                 <select
                   id="trip"
                   name="trip"
-                  className="p-2 border rounded-md"
+                  className="p-2 border rounded-md outline-custom_purple"
                   onChange={dateHandler}
                 >
-                  <option value="ROUND_TRIP">Round-trip</option>
                   <option value="ONE_WAY">One-Way</option>
+                  <option value="ROUND_TRIP">Round-trip</option>
                 </select>
               </div>
               <div className="flex flex-col w-2/4 my-4">
@@ -136,7 +153,7 @@ const SearchForm = () => {
                   placeholder="From?"
                   type="text"
                   name="cityFrom"
-                  className="w-2/4 p-2 border rounded-md"
+                  className="w-2/4 p-2 border rounded-md outline-custom_purple"
                   required
                   onInvalid={invalidHandler}
                   onInput={validHandler}
@@ -146,7 +163,7 @@ const SearchForm = () => {
                   placeholder="To?"
                   type="text"
                   name="cityTo"
-                  className="w-2/4 p-2 border rounded-md"
+                  className="w-2/4 p-2 border rounded-md outline-custom_purple"
                   required
                   onInvalid={invalidHandler}
                   onInput={validHandler}
@@ -207,23 +224,26 @@ const SearchForm = () => {
           }}
         />
       ) : (
-        flightsData?.listings && (
+        flightsData && (
           <div className="flex flex-col justify-between gap-8 py-6 md:flex-row">
             <div className="flex flex-col gap-4 basis-3/12">
-              {/*filter */}wow
+              <FlightsFilter
+                flights={data?.listings}
+                onFilter={filterHandler}
+              />
             </div>
             <div className="flex flex-col items-center md:basis-9/12">
               {(!showMore &&
-                flightsData.listings
+                flightsData
                   .slice(0, 15)
                   .map((flight) => (
                     <FlightItem key={flight.id} flight={flight} />
                   ))) ||
                 (showMore &&
-                  flightsData.listings.map((flight) => (
+                  flightsData.map((flight) => (
                     <FlightItem key={flight.id} flight={flight} />
                   )))}
-              {flightsData?.listings.length !== 0 && (
+              {flightsData?.length >= 15 && (
                 <button
                   className="w-full"
                   onClick={() => showMoreHandler((prev) => !prev)}

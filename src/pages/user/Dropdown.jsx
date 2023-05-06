@@ -6,7 +6,6 @@ import { Link, useLocation } from "react-router-dom";
 const Dropdown = ({ status }) => {
   const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
   const location = useLocation();
-  console.log(location);
   const target = location.pathname === "/profile" ? "/" : location.pathname;
   if (!isAuthenticated && /^\/(?:flights|hotels)\//.test(location.pathname)) {
     return;

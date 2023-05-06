@@ -22,7 +22,7 @@ const Banner = () => {
   // capitalize the first letter of the city
   const city = fetcher.formData?.get("city");
   const capitalizedCity = city?.charAt(0).toUpperCase() + city?.slice(1);
-  console.log(capitalizedCity);
+
   const date = fetcher.formData?.get("date");
   const rooms = fetcher.formData?.get("rooms");
   const existedCities = useSelector((state) => state.search?.searchHistory);

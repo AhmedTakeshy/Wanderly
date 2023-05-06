@@ -26,7 +26,7 @@ const FlightItem = ({ flight }) => {
           </span>
         </div>
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 mx-4 my-2 w-[95%]">
-          <div className="flex flex-row items-center gap-4 md:gap-0 md:flex-col">
+          <div className="flex flex-row items-baseline gap-4 md:gap-0 md:flex-col">
             <div className="mb-2 text-left">
               <h2 className="text-lg">First trip</h2>
               <h3 className="text-base font-normal">
