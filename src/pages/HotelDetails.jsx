@@ -6,7 +6,6 @@ import PropagateLoader from "react-spinners/PropagateLoader";
 
 const HotelDetails = () => {
   const { hotel } = useLoaderData();
-  console.log(hotel);
   return (
     <Suspense
       fallback={

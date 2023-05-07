@@ -7,7 +7,6 @@ import { MdLabelImportant } from "react-icons/md";
 import { TypeAnimation } from "react-type-animation";
 
 const HotelItem = ({ hotel }) => {
-  console.log(hotel);
   const [substring, setSubstring] = useState(false);
   const responsive = {
     superLargeDesktop: {
@@ -191,11 +190,11 @@ const HotelItem = ({ hotel }) => {
               </article>
             </div>
           </div>
-          <div className="flex flex-col items-center justify-between gap-4 mx-2 mt-4 text-center md:w-1/4">
-            <h2 className="text-black w-full font-bold text-2xl px-2 mb-4 py-2 bg-gradient-to-tl from-[#0cebeb] via-[#20e3b2] to-[#29ffc6] rounded-md">
+          <div className="flex flex-col items-center justify-start gap-4 mx-2 text-center md:w-1/4">
+            <h2 className="text-black w-full font-bold text-2xl px-2 py-2 bg-gradient-to-tl from-[#0cebeb] via-[#20e3b2] to-[#29ffc6] rounded-md">
               Most popular facilities
             </h2>
-            <div className="flex flex-wrap h-[31.5rem] w-full md:overscroll-none overscroll-auto overflow-auto mx-2 py-4 bg-gradient-to-tl from-[#0cebeb] via-[#20e3b2] to-[#29ffc6] rounded-md">
+            <div className="flex flex-wrap max-h-[33rem] w-full md:overscroll-none overscroll-auto overflow-auto mx-2 py-4 bg-gradient-to-tl from-[#0cebeb] via-[#20e3b2] to-[#29ffc6] rounded-md">
               {hotel.hotelFeatures.features.map((feature, index) => (
                 <p
                   key={index}
@@ -205,7 +204,7 @@ const HotelItem = ({ hotel }) => {
                 </p>
               ))}
             </div>
-            <button className="w-full px-4 py-2 mt-4 text-xl font-bold text-white rounded-md bg-custom_purple md:mt-0">
+            <button className="w-full px-4 py-2 text-xl font-bold text-white rounded-md bg-custom_purple md:mt-0">
               Reserve
             </button>
           </div>

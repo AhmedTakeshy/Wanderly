@@ -37,9 +37,7 @@ const HotelsFilter = ({ data, onFilter }) => {
   };
 
   useEffect(() => {
-    // clear filtered data when data changes
     onFilter(filteredData); // pass filtered data back to parent component
-    console.log(filteredData);
   }, [filteredData]);
   return (
     <div className="w-full max-w-md mx-auto ">

@@ -24,8 +24,6 @@ const SearchForm = () => {
       setFlightsData(data.listings);
       form.current.reset();
     }
-    console.log(flightsData);
-    console.log(isDataRendered);
   }, [data, state, flightsData]);
 
   const showMoreHandler = () => {
