@@ -5,12 +5,12 @@ const CookiesPrivacyModal = ({ isOpen, onClose, settings }) => {
   return (
     <>
       <div
-        className={`fixed top-[2rem] inset-0 z-50 overflow-auto bg-opacity-50 ${
+        className={`fixed top-[2rem] inset-0 z-50 overflow-auto bg-opacity-50  overscroll-none ${
           isOpen ? "" : "hidden"
         }`}
         onClick={onClose}
       >
-        <div className="fixed top-0 left-0 w-full h-full bg-black opacity-70"></div>
+        <div className="fixed top-0 left-0 w-screen h-screen bg-black opacity-75"></div>
         <div
           className={`relative mx-auto w-full max-w-5xl ${
             isOpen ? "" : "hidden"

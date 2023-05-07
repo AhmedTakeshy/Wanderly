@@ -25,7 +25,7 @@ const Cookies = () => {
         isOpen={isModalOpen}
         onClose={handleCloseModal}
       />
-      <section className="fixed max-w-2xl z-[1] p-4 mx-auto bg-white border border-gray-200 md:gap-x-4 md:left-24 md:bottom-8 left-0 bottom-0 dark:bg-gray-900 md:flex md:items-center dark:border-gray-700 rounded-2xl">
+      <section className="fixed max-w-2xl z-[1] p-4 mx-auto bg-white border border-gray-200 md:gap-x-4 md:left-[50%] md:translate-x-[-50%] md:bottom-8 left-0 bottom-0 dark:bg-gray-900 md:flex flex-col lg:flex-row md:items-center dark:border-gray-700 rounded-2xl">
         <div className="flex items-center gap-x-4">
           <span className="inline-flex p-2 text-blue-500 rounded-lg shrink-0 dark:bg-gray-800 bg-blue-100/80">
             <svg
@@ -41,7 +41,6 @@ const Cookies = () => {
               />
             </svg>
           </span>
-
           <p className="text-sm text-gray-600 dark:text-gray-300">
             We use cookies to ensure that we give you the best experience on our
             website.
@@ -58,7 +57,6 @@ const Cookies = () => {
             .
           </p>
         </div>
-
         <div className="flex items-center mt-6 gap-x-4 shrink-0 lg:mt-0">
           <button
             onClick={acceptCookiesHandler}
@@ -66,7 +64,6 @@ const Cookies = () => {
           >
             Accept All Cookies
           </button>
-
           <button
             onClick={() => {
               setSettings(true);
