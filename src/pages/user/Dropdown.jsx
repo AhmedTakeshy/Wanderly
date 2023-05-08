@@ -22,7 +22,10 @@ const Dropdown = ({ status }) => {
             />
           )
         ) : (
-          <BiUser size={25} className="cursor-pointer hover:text-black" />
+          <BiUser
+            size={25}
+            className="cursor-pointer hover:underline underline-offset-4"
+          />
         )}
         {status && (
           <div className="absolute right-0 py-2 mt-2 bg-white border rounded shadow-xl w-36">

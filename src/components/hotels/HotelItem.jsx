@@ -191,14 +191,14 @@ const HotelItem = ({ hotel }) => {
             </div>
           </div>
           <div className="flex flex-col items-center justify-start gap-4 mx-2 text-center md:w-1/4">
-            <h2 className="text-black w-full font-bold text-2xl px-2 py-2 bg-gradient-to-tl from-[#0cebeb] via-[#20e3b2] to-[#29ffc6] rounded-md">
+            <h2 className="text-white w-full font-bold text-2xl px-2 py-2 bg-gradient-to-tl from-[#0cebeb] via-[#20e3b2] to-[#29ffc6] rounded-md">
               Most popular facilities
             </h2>
             <div className="flex flex-wrap max-h-[33rem] w-full md:overscroll-none overscroll-auto overflow-auto mx-2 py-4 bg-gradient-to-tl from-[#0cebeb] via-[#20e3b2] to-[#29ffc6] rounded-md">
               {hotel.hotelFeatures.features.map((feature, index) => (
                 <p
                   key={index}
-                  className="p-2 m-2 text-black bg-transparent border-2 border-black rounded"
+                  className="p-2 m-2 text-white border-2 border-black rounded backdrop-blur-sm bg-gray-800/30 border-gray-400/50"
                 >
                   {feature}
                 </p>

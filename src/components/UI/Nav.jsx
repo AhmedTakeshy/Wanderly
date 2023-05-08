@@ -56,7 +56,9 @@ const Nav = () => {
         <li>
           <NavLink
             className={({ isActive }) =>
-              isActive ? `underline underline-offset-4` : undefined
+              isActive
+                ? `underline underline-offset-4`
+                : "hover:underline underline-offset-4"
             }
             to="/"
           >
@@ -66,7 +68,9 @@ const Nav = () => {
         <li>
           <NavLink
             className={({ isActive }) =>
-              isActive ? `underline underline-offset-4 ` : "hover:text-black"
+              isActive
+                ? `underline underline-offset-4 `
+                : "hover:underline underline-offset-4"
             }
             to="/flights"
           >
@@ -86,7 +90,9 @@ const Nav = () => {
         <li>
           <NavLink
             className={({ isActive }) =>
-              isActive ? `underline underline-offset-4` : "hover:text-black"
+              isActive
+                ? `underline underline-offset-4`
+                : "hover:underline underline-offset-4"
             }
             to="/about"
           >
@@ -95,7 +101,7 @@ const Nav = () => {
         </li>
       </ul>
       <div
-        className="items-center justify-between hidden px-4  md:flex gap-x-2"
+        className="items-center justify-between hidden px-4 md:flex gap-x-2"
         onClick={showComponentHandler}
       >
         <Dropdown status={showComponent} />
@@ -109,7 +115,7 @@ const Nav = () => {
             size={25}
           />
         ) : (
-          <HiOutlineMenuAlt4 className="relative  top-1" size={25} />
+          <HiOutlineMenuAlt4 className="relative top-1" size={25} />
         )}
       </div>
 
