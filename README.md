@@ -44,11 +44,11 @@ Users can search for hotels by entering a city name, number of rooms, and date r
 
 #### Recent Searches
 
-On the home page, users can view up to three of their most recent hotel searches. If they are logged in, they can view all of their recent searches.
+On the home page, users can view up to three of their most recent hotel searches. If they are logged in, they can view all of their recent searches. This feature helps users easily access their past searches and continue planning their travel.
 
 #### Favorite Destinations
 
-Users can add popular destinations to their favorite list, which will be displayed on their profile page if they are logged in.
+Users can add popular destinations to their favorite list, which will be displayed on their profile page if they are logged in. This feature allows users to save their favorite travel destinations and quickly access them for future trips.
 
 #### Flight Search
 
@@ -56,7 +56,7 @@ Users can search for flights by entering the date, class, departure city, and de
 
 #### Authentication
 
-Wanderly uses Auth0 for authentication. Users can sign up and log in to access additional features such as recent search history and the ability to add destinations to their favorite list.
+Wanderly uses Auth0 for authentication. Users can sign up and log in to access additional features such as recent search history and the ability to add destinations to their favorite list. This feature ensures that users' data is secure and only accessible by authorized individuals.
 
 ### Technologies
 
