@@ -1,70 +1,99 @@
-# Getting Started with Create React App
+# Wanderly
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Wanderly is a web app designed to showcase my portfolio. The app is a travel app that allows users to search for hotels and flights, as well as sign up and log in to access additional features such as recent search history and the ability to add destinations to their favorite list.
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- [overview](#overview)
+    - [Getting Started](#getting-started)
+    - [Screenshot](#screenshot)
+    - [Features](#features)
+        - [Hotel Search](#hotel-search)
+        - [Recent Searches](#recent-searches)
+        - [Favorite Destinations](#favorite-destinations)
+        - [Flight Search](#flight-search)
+        - [Authentication](#authentication)
+    - [Technologies](#technologies)
+    - [Contributing](#contributing)
+    - [License](#license)
+    - [Acknowledgments](#acknowledgments)
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Overview
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Getting Started
 
-### `npm test`
+To get started with Wanderly, follow these steps:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Open your terminal and run `git clone https://github.com/AhmedTakeshy/Wanderly.git`
+2. Change directory to the Wanderly directory: `cd Wanderly`
+3. Install the dependencies: `npm install`
+4. Start the development server: `npm run dev`
 
-### `npm run build`
+### Screenshot
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![Wanderly](./public/wanderly.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Features
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Wanderly has a number of features that allow users to search for hotels and flights, view search results, and access their search history and favorite destinations.
 
-### `npm run eject`
+#### Hotel Search
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Users can search for hotels by entering a city name, number of rooms, and date range. Once the search is performed, they can filter the results by price and rating. Users can then view the details of a hotel, including photos and location information.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### Recent Searches
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+On the home page, users can view up to three of their most recent hotel searches. If they are logged in, they can view all of their recent searches.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+#### Favorite Destinations
 
-## Learn More
+Users can add popular destinations to their favorite list, which will be displayed on their profile page if they are logged in.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#### Flight Search
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Users can search for flights by entering the date, class, departure city, and destination city. They can also filter the results by price and the number of stops. Once they have selected a flight, they can view a mock ticket with the details of the flight.
 
-### Code Splitting
+#### Authentication
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Wanderly uses Auth0 for authentication. Users can sign up and log in to access additional features such as recent search history and the ability to add destinations to their favorite list.
 
-### Analyzing the Bundle Size
+### Technologies
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Wanderly was built using the following technologies:
 
-### Making a Progressive Web App
+- React
+- Redux Toolkit
+- React Router DOM
+- Redux Persist
+- Tailwind CSS
+- React Icons
+- React Hook Form
+- React Map GL
+- React Spinner
+- React Toastify
+- Axios
+- Auth0
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Contributing
 
-### Advanced Configuration
+If you'd like to contribute to Wanderly, please create a new branch and name it with the functionality that you will add, such as `Create-new-section`, and submit a pull request.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### License
 
-### Deployment
+This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.txt) file for details.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### Acknowledgments
 
-### `npm run build` fails to minify
+- [React Icons](https://react-icons.github.io/react-icons/)
+- [React Hook Form](https://react-hook-form.com/)
+- [React Map GL](https://visgl.github.io/react-map-gl/)
+- [React Spinner](https://www.npmjs.com/package/react-spinners)
+- [React Toastify](https://fkhadra.github.io/react-toastify/introduction/)
+- [Axios](https://axios-http.com/)
+- [Auth0](https://auth0.com/)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Contact
+
+- [Ahmed Takeshy](https://takeshy.works/)
+- [LinkedIn](https://www.linkedin.com/in/ahmed-abdelsamie-a1a46a166/)
