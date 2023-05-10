@@ -56,10 +56,10 @@ const router = createBrowserRouter([
           },
         ],
       },
-      {
-        path: "car",
-        element: <CarPage />,
-      },
+      // {
+      //   path: "car",
+      //   element: <CarPage />,
+      // },
       {
         path: "about",
         element: <AboutPage />,
