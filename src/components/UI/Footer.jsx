@@ -103,7 +103,11 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <p className="mt-8 text-sm text-gray-800">Copyright © 2022 Wanderly</p>
+        <div className="mt-8 text-sm text-gray-800 flex flex-col gap-2">
+          <p>Copyright © 2022 Wanderly</p>
+          <span>Develobed by <a className="font-semibold text-custom_purple" href="https://takeshy.tech/">Takeshy</a>
+          </span>
+        </div>
       </div>
     </footer>
     // <div className="w-full bg-gray-100 py-16">
