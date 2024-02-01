@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const dateConverter = (date) => {
   const dateStr = date;
-  const dateConvert = new Date(`${dateStr} 2023`);
+  const dateConvert = new Date(`${dateStr} 2024`);
   const formattedDate = dateConvert.toISOString().substring(0, 10);
   return formattedDate;
 };
