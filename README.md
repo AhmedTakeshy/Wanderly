@@ -6,7 +6,7 @@ Wanderly is a web app designed to showcase my portfolio. The app is a travel app
 
 - [overview](#overview)
     - [Getting Started](#getting-started)
-    - [Screenshot](#screenshot)
+    - [Video](#video)
     - [Features](#features)
         - [Hotel Search](#hotel-search)
         - [Recent Searches](#recent-searches)
@@ -30,9 +30,10 @@ To get started with Wanderly, follow these steps:
 3. Install the dependencies: `npm install`
 4. Start the development server: `npm run dev`
 
-### Screenshot
+### Video
 
-![Wanderly](./public/wanderly.png)
+https://github.com/AhmedTakeshy/Wanderly/assets/37537011/94878c32-66fa-4836-b411-53d2957ca442
+
 
 ### Features
 
