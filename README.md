@@ -96,5 +96,5 @@ This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.t
 
 ### Contact
 
-- [Ahmed Takeshy](https://takeshy.works/)
-- [LinkedIn](https://www.linkedin.com/in/ahmed-abdelsamie-a1a46a166/)
+- [Ahmed Takeshy](https://takeshy.tech/)
+- [LinkedIn](https://www.linkedin.com/in/ahmedabdelsamiee/)
